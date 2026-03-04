@@ -1,0 +1,13 @@
+body {
+  background: #050505;
+  color: #fff;
+  font-family: 'Inter', system-ui, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: rgba(249, 115, 22, 0.3);
+  color: white;
+}
