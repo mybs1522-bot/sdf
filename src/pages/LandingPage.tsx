@@ -49,8 +49,8 @@ const LandingPage: React.FC = () => {
         {/* ═══ HERO — Light Theme ═══ */}
         <section className="relative pt-6 pb-16 md:pb-24 overflow-hidden bg-gradient-to-b from-orange-50/70 via-white to-slate-50 border-b border-slate-200/60">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-4xl pointer-events-none">
-            <div className="absolute top-10 left-1/3 w-[400px] h-[400px] bg-orange-200/30 blur-[140px] rounded-full" />
-            <div className="absolute top-10 right-1/3 w-[300px] h-[300px] bg-amber-200/20 blur-[120px] rounded-full" />
+            <div className="absolute top-10 left-1/3 w-[400px] h-[400px] bg-orange-200/30 blur-[140px] rounded-full hidden md:block" />
+            <div className="absolute top-10 right-1/3 w-[300px] h-[300px] bg-amber-200/20 blur-[120px] rounded-full hidden md:block" />
           </div>
           <div className="max-w-5xl mx-auto px-5 relative z-10">
             <div className="flex flex-col items-center text-center pt-6 md:pt-10">
