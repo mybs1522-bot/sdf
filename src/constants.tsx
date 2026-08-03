@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Course, Feature, Testimonial, FaqItem, PricingPlan } from './types';
 import { Download, MonitorPlay, Infinity, LifeBuoy, Users, Package, Layers } from 'lucide-react';
@@ -38,16 +37,16 @@ const RAW_COURSES: Course[] = [
     id: '5',
     title: 'V-Ray Realism',
     software: 'V-Ray',
-    description: 'Turn your models into photographs so realistic that clients can\'t tell the difference. Master the lighting, materials, and post-production secrets that agencies charge ₹10,000 per image for.',
+    description: 'Turn your models into photographs so realistic that clients can\'t tell the difference. Master the lighting, materials, and post-production secrets that agencies charge ₦100,000 per image for.',
     imageUrl: 'https://lh3.googleusercontent.com/d/1aHEt_z78tYD_0Cn66DiduAnhwn-o8El8',
     color: 'from-amber-500 to-orange-400',
     students: '48k',
     learningPoints: [
-      'Lighting that looks like a ₹4L photoshoot',
+      'Lighting that looks like a ₦4,000,000 photoshoot',
       'Materials indistinguishable from real life',
       'Post-production secrets of top studios'
     ],
-    workflowImpact: 'Charge ₹3,000–₹10,000 per render image.'
+    workflowImpact: 'Charge ₦30,000–₦100,000 per render image.'
   },
   {
     id: '6',
@@ -90,7 +89,7 @@ const RAW_COURSES: Course[] = [
     learningPoints: [
       'Generate 10 concepts in 10 minutes',
       'Fix renders with AI—no re-rendering',
-      'Free tools that replace ₹40,000/mo software'
+      'Free tools that replace ₦400,000/yr software'
     ],
     workflowImpact: 'Never start from a blank page again.'
   }
@@ -111,8 +110,8 @@ export const PRICING_PLANS: PricingPlan[] = [
     id: 'lifetime-all-access',
     duration: 'Complete Bundle',
     period: 'One-time payment',
-    price: '₹999',
-    originalPrice: '₹1,999',
+    price: '₦37,000',
+    originalPrice: '₦110,000',
     label: 'CLOSING SOON',
     features: [
       'All 6 Courses (AutoCAD to AI)',
@@ -128,111 +127,111 @@ export const PRICING_PLANS: PricingPlan[] = [
 
 export const TESTIMONIALS: Testimonial[] = [
   {
-    name: 'Priya S.',
-    role: 'Freelancer',
-    location: 'Mumbai, IN',
-    content: 'I was charging ₹25,000 per project and pulling all-nighters. After this course, I raised my rate to ₹1,00,000 and clients didn\'t even flinch. My income literally tripled in 3 months.'
+    name: 'Chioma N.',
+    role: 'Freelance Designer',
+    location: 'Lekki, Lagos',
+    content: 'I was charging ₦150,000 per project and pulling all-nighters. After this course, I raised my rate to ₦600,000 and clients in Victoria Island didn\'t even flinch. My income quadrupled in 3 months.'
   },
   {
-    name: 'Arjun K.',
+    name: 'Babatunde A.',
     role: 'Studio Owner',
-    location: 'Bangalore, IN',
-    content: 'I was about to fire my team because projects took 3 weeks. Now we finish in 4 days. Best ₹999 I\'ve ever spent—it saved my business.'
+    location: 'Ikeja, Lagos',
+    content: 'I was about to fire my team because projects took 3 weeks. Now we finish in 4 days. Best ₦37,000 I\'ve ever spent—it saved my studio in Lagos.'
   },
   {
-    name: 'Rohan M.',
+    name: 'Chidiebere O.',
     role: 'Architect',
-    location: 'Delhi, IN',
-    content: 'As a solo architect, I thought I couldn\'t compete with big firms. The AI workflow changed everything. Clients now choose ME over agencies. Still feels unreal.'
+    location: 'Maitama, Abuja',
+    content: 'As a solo architect in Abuja, I thought I couldn\'t compete with large agencies. The AI workflow changed everything. Clients now choose ME over expensive firms. Still feels unreal.'
   },
   {
-    name: 'Sneha R.',
+    name: 'Folake B.',
     role: '3D Visualizer',
-    location: 'Pune, IN',
-    content: 'The 10,000 textures and 2,000 models alone saved me ₹40,000+ in downloads I used to buy monthly. I just drag, drop, and render. My output tripled.'
+    location: 'Port Harcourt',
+    content: 'The 10,000 textures and 2,000 models alone saved me ₦400,000+ in asset packs I used to buy monthly. I just drag, drop, and render. My output tripled.'
   },
   {
-    name: 'Vikram J.',
+    name: 'Emeka K.',
     role: 'Architecture Student',
-    location: 'Hyderabad, IN',
-    content: 'My professors now ask ME how I render so fast. Finished my final thesis project in 3 days—everyone else took 3 weeks. Got offers before graduation.'
+    location: 'Yaba, Lagos',
+    content: 'My lecturers now ask ME how I render so fast. Finished my final thesis project in 3 days—everyone else took 3 weeks. Got 3 job offers in Lagos before graduation.'
   },
   {
-    name: 'Ananya P.',
+    name: 'Ngozi E.',
     role: 'Interior Designer',
-    location: 'Chennai, IN',
-    content: 'I pitched a client on Monday with a cinematic Lumion video I made on Sunday night. Closed a ₹15,00,000 project on the spot. D5 and Lumion changed my career.'
+    location: 'Enugu',
+    content: 'I pitched a client in GRA Port Harcourt with a cinematic Lumion video I made on Sunday night. Closed a ₦15,000,000 project on the spot. D5 and Lumion changed my career.'
   },
   {
-    name: 'Rahul G.',
+    name: 'Femi A.',
     role: 'Real Estate Developer',
-    location: 'Noida, IN',
-    content: 'I was paying agencies ₹2,50,000 per rendered image. My team does it in-house now. We saved ₹30,00,000 this year alone. The ROI is insane.'
+    location: 'Asokoro, Abuja',
+    content: 'I was paying agencies ₦2,500,000 per rendered video. My team does it in-house now. We saved ₦30,000,000 this year alone. The ROI is insane.'
   },
   {
-    name: 'Fatima N.',
+    name: 'Amina Y.',
     role: 'Junior Architect',
-    location: 'Jaipur, IN',
-    content: 'Applied to 40 jobs: silence. Learned this workflow, rebuilt my portfolio in 2 weeks. Got 3 offers. They hired me specifically for the AI + rendering skills.'
+    location: 'Kano',
+    content: 'Applied to 40 jobs: silence. Learned this workflow, rebuilt my portfolio in 2 weeks. Got 3 offers in Abuja and Lagos. They hired me specifically for the AI + rendering skills.'
   },
   {
-    name: 'Karan T.',
+    name: 'Oluwaseun M.',
     role: 'Freelance Visualizer',
-    location: 'Kolkata, IN',
-    content: 'I went from ₹60,000/month freelancing to consistent ₹5,00,000+ months. The V-Ray module alone was worth 100x the price. Clients now come to me.'
+    location: 'Ibadan',
+    content: 'I went from ₦250,000/month freelancing to consistent ₦2,500,000+ months. The V-Ray module alone was worth 100x the price. Clients now come to me.'
   },
   {
-    name: 'Meera V.',
+    name: 'Blessing A.',
     role: 'Interior Studio Lead',
-    location: 'Ahmedabad, IN',
+    location: 'Calabar',
     content: 'My team of 4 now produces what used to take 8 people. We stopped outsourcing renders completely. Our profit margin doubled this quarter.'
   },
   {
-    name: 'Aditya D.',
+    name: 'Tunde S.',
     role: 'Design Student',
-    location: 'Chandigarh, IN',
-    content: 'Started with zero experience. Literally didn\'t know what SketchUp was. 15 days later I had a portfolio that got me my first paid gig (₹30,000!). Life-changing.'
+    location: 'Abeokuta',
+    content: 'Started with zero experience. Literally didn\'t know what SketchUp was. 15 days later I had a portfolio that got me my first paid gig (₦150,000!). Life-changing.'
   },
   {
-    name: 'Nandini I.',
+    name: 'Kehinde O.',
     role: 'Architect & Educator',
-    location: 'Lucknow, IN',
-    content: 'I teach at a university and I recommend this to ALL my students now. The curriculum is more practical and up-to-date than most 4-year programs. Embarrassingly good.'
+    location: 'Benin City',
+    content: 'I teach architecture and I recommend this to ALL my students across Nigeria now. The curriculum is more practical and up-to-date than most 5-year university programs.'
   },
   {
-    name: 'Rajesh H.',
+    name: 'Ifeanyi C.',
     role: 'Interior Architect',
-    location: 'Indore, IN',
-    content: 'The D5 Render and Lumion courses are game-changers. I can now produce high-end animations in a fraction of the time. My clients are absolutely loving the new workflow.'
+    location: 'Abuja',
+    content: 'The D5 Render and Lumion courses are game-changers. I can now produce high-end animations in a fraction of the time. My clients in Gwarinpa are loving it.'
   },
   {
-    name: 'Divya S.',
+    name: 'Zainab I.',
     role: 'Freelance Designer',
-    location: 'Mumbai, IN',
-    content: 'From AutoCAD to AI, this bundle covers everything. The texture library is a goldmine. I used to spend hours searching for the right materials, now I have them all.'
+    location: 'Kaduna',
+    content: 'From AutoCAD to AI, this bundle covers everything. The texture library is a goldmine. I used to spend hours searching for materials, now I have them all.'
   },
   {
-    name: 'Manish G.',
+    name: 'Damilola O.',
     role: 'Visualization Artist',
-    location: 'Gurgaon, IN',
-    content: 'V-Ray realism is what I was missing. The step-by-step lighting guide is incredible. My renders now have that "professional" look that wins high-ticket clients.'
+    location: 'Lagos',
+    content: 'V-Ray realism is what I was missing. The step-by-step lighting guide is incredible. My renders now have that high-end look that wins premium clients in Lekki.'
   },
   {
-    name: 'Pooja B.',
-    role: 'Architectural Student',
-    location: 'Nagpur, IN',
-    content: 'AI concept generation is so fast. I can explore 20 different design ideas in one morning. This course gave me a huge advantage in my studio projects.'
+    name: 'Funke O.',
+    role: 'Architecture Student',
+    location: 'Ibadan',
+    content: 'AI concept generation is so fast. I can explore 20 different design ideas in one morning. This course gave me a massive advantage in my studio project.'
   }
 ];
 
 export const FAQ_ITEMS: FaqItem[] = [
   {
-    question: "Is this really just ₹999? What's the catch?",
+    question: "Is this really just ₦37,000? What's the catch?",
     answer: "No catch. No subscription. No hidden fees. No upsells. We believe everyone deserves access to world-class design education, not just people at expensive firms. We keep it affordable by teaching at scale—50,000+ students and counting."
   },
   {
     question: "Do I need an expensive computer?",
-    answer: "Nope. A decent laptop with a basic graphics card works perfectly. We also teach you cloud rendering tricks for slower machines, so even a ₹40,000 laptop can produce stunning results. We've got you covered."
+    answer: "Nope. A decent laptop with a basic graphics card works perfectly. We also teach you cloud rendering tricks for slower machines, so even a ₦250,000 laptop can produce stunning results. We've got you covered."
   },
   {
     question: "I'm a complete beginner with zero experience. Will I get lost?",
@@ -240,7 +239,7 @@ export const FAQ_ITEMS: FaqItem[] = [
   },
   {
     question: "How fast will I actually see results?",
-    answer: "Give it 15 focused days (1–2 hours per day). By day 5, you'll create your first photorealistic render. By day 15, you'll have a portfolio piece that looks like it came from a professional studio. If you don't feel dramatically more confident and capable, we'll refund every penny."
+    answer: "Give it 15 focused days (1–2 hours per day). By day 5, you'll create your first photorealistic render. By day 15, you'll have a portfolio piece that looks like it came from a professional studio. If you don't feel dramatically more confident and capable, we'll refund every naira."
   },
   {
     question: "Do I get the actual software included?",
@@ -248,7 +247,7 @@ export const FAQ_ITEMS: FaqItem[] = [
   },
   {
     question: "What if I don't like it? Can I get a refund?",
-    answer: "100%. We have a no-questions-asked 7-day refund policy. Email us, and you get your money back within 48 hours. We don't want your ₹999 if you're not blown away by the value. Simple as that."
+    answer: "100%. We have a no-questions-asked 7-day refund policy. Email us, and you get your money back within 48 hours. We don't want your ₦37,000 if you're not blown away by the value. Simple as that."
   },
   {
     question: "Is this just theory or will I build real projects?",
@@ -260,7 +259,7 @@ export const FAQ_ITEMS: FaqItem[] = [
   },
   {
     question: "Will these skills actually help me earn more money?",
-    answer: "Our students report earning ₹3,000–₹10,000 per rendered image, ₹50,000+ per 1,000 sq.ft. of design, and ₹80,000–₹4,00,000 per cinematic walkthrough video. The ROI on ₹999 is absurd. Many students earn back the cost on their first freelance gig within the first week."
+    answer: "Our students report earning ₦30,000–₦100,000 per rendered image, ₦500,000+ per 1,000 sq.ft. of design, and ₦800,000–₦4,000,000 per cinematic walkthrough video. The ROI on ₦37,000 is absurd. Many students earn back the cost on their first freelance gig within the first week."
   },
   {
     question: "Can I access the courses on mobile?",
@@ -269,31 +268,31 @@ export const FAQ_ITEMS: FaqItem[] = [
 ];
 
 export const VALUE_STACK_ITEMS = [
-  { name: 'AutoCAD Precision Drafting', value: '₹16,000' },
-  { name: 'SketchUp 3D Modeling', value: '₹20,000' },
-  { name: 'V-Ray Photo-Realism Masterclass', value: '₹29,000' },
-  { name: 'Lumion Cinematic Walkthroughs', value: '₹25,000' },
-  { name: 'D5 Real-Time Rendering', value: '₹20,000' },
-  { name: 'AI Design & Rendering Course', value: '₹41,000' },
-  { name: '10,000+ Premium Texture Library', value: '₹41,000' },
-  { name: '2,000+ Drag-and-Drop 3D Models', value: '₹33,000' },
-  { name: 'Software Installation Hub', value: '₹8,000' },
-  { name: 'Private Mentor Access & Portfolio Review', value: '₹25,000' },
-  { name: 'Freelancing Pricing Playbook', value: '₹12,000' },
-  { name: 'Certified Digital Diploma', value: '₹4,000' },
+  { name: 'AutoCAD Precision Drafting', value: '₦160,000' },
+  { name: 'SketchUp 3D Modeling', value: '₦200,000' },
+  { name: 'V-Ray Photo-Realism Masterclass', value: '₦290,000' },
+  { name: 'Lumion Cinematic Walkthroughs', value: '₦250,000' },
+  { name: 'D5 Real-Time Rendering', value: '₦200,000' },
+  { name: 'AI Design & Rendering Course', value: '₦410,000' },
+  { name: '10,000+ Premium Texture Library', value: '₦410,000' },
+  { name: '2,000+ Drag-and-Drop 3D Models', value: '₦330,000' },
+  { name: 'Software Installation Hub', value: '₦80,000' },
+  { name: 'Private Mentor Access & Portfolio Review', value: '₦250,000' },
+  { name: 'Freelancing Pricing Playbook', value: '₦120,000' },
+  { name: 'Certified Digital Diploma', value: '₦40,000' },
 ];
 
 export const WHO_IS_THIS_FOR = [
   'You want a portfolio that actually gets you hired',
-  'You want to charge ₹80,000+ per render and feel confident doing it',
-  'You want to stop pulling all-nighters and go home at 5pm',
+  'You want to charge ₦800,000+ per render project and feel confident doing it',
+  'You want to stop pulling all-nighters and go home on time',
   'You need photorealistic visuals to sell your design ideas',
   'You\'re ready to stop struggling and start earning what you deserve',
   'You want to freelance globally and work from anywhere'
 ];
 
 export const WHO_IS_THIS_NOT_FOR = [
-  'You\'re looking for a \"magic button\" that does the work for you',
+  'You\'re looking for a "magic button" that does the work for you',
   'You\'re not willing to dedicate 1–2 hours a day for 15 days',
   'You refuse to learn new tools or adapt to modern workflows',
   'You want to stay stuck doing things the old way',
@@ -303,17 +302,17 @@ export const WHO_IS_THIS_NOT_FOR = [
 /* ─── NEW DATA: MENTORS ─── */
 export const MENTORS = [
   {
-    name: 'Rajesh Sharma',
+    name: 'Babajide Williams',
     title: 'Lead Instructor — SketchUp, V-Ray, Lumion',
-    bio: '12+ years in architectural visualization. Trained 50,000+ students across 42 countries. Former visualization lead at a top Mumbai firm.',
+    bio: '12+ years in architectural visualization. Trained 50,000+ students across Nigeria and Africa. Former visualization lead at a top firm in Victoria Island, Lagos.',
     specialties: ['SketchUp', 'V-Ray', 'Lumion', 'AI Rendering'],
     students: '50,000+',
     rating: 4.8,
   },
   {
-    name: 'Ananya Iyer',
+    name: 'Chiamaka Nnadi',
     title: 'Instructor — AutoCAD, D5 Render, Revit',
-    bio: '10+ years of industry experience. Specialist in BIM workflows and real-time rendering. Has worked on 200+ commercial projects across India and the Middle East.',
+    bio: '10+ years of industry experience. Specialist in BIM workflows and real-time rendering. Has worked on 200+ commercial projects across Nigeria and West Africa.',
     specialties: ['AutoCAD', 'D5 Render', 'Revit', 'BIM'],
     students: '35,000+',
     rating: 4.9,
@@ -329,8 +328,8 @@ export const RATINGS = [
 
 /* ─── NEW DATA: INCOME TIERS ─── */
 export const INCOME_TIERS = [
-  { label: 'Single Render Image', before: '₹500–₹1,500', after: '₹3,000–₹10,000', icon: '🖼️' },
-  { label: 'Interior Design (1000 sq.ft)', before: '₹8,000–₹25,000', after: '₹50,000–₹1,25,000', icon: '🏠' },
-  { label: 'Cinematic Walkthrough', before: '₹0', after: '₹80,000–₹4,00,000', icon: '🎬' },
-  { label: 'Monthly Freelance Income', before: '₹40,000–₹1,25,000', after: '₹3,00,000–₹10,00,000', icon: '💰' },
+  { label: 'Single Render Image', before: '₦10,000–₦25,000', after: '₦30,000–₦100,000', icon: '🖼️' },
+  { label: 'Interior Design (1000 sq.ft)', before: '₦80,000–₦250,000', after: '₦500,000–₦1,500,000', icon: '🏠' },
+  { label: 'Cinematic Walkthrough', before: '₦0', after: '₦800,000–₦4,000,000', icon: '🎬' },
+  { label: 'Monthly Freelance Income', before: '₦250,000–₦500,000', after: '₦1,500,000–₦5,000,000+', icon: '💰' },
 ];

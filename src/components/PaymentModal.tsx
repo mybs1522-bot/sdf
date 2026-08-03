@@ -1,18 +1,9 @@
-
 import React, { useState, useEffect } from 'react';
-import { X, Check, Loader2, Timer, Mail, ShieldCheck, ArrowRight, Download, Phone } from 'lucide-react';
+import { X, Check, Loader2, Timer, Mail, ShieldCheck, ArrowRight, Download } from 'lucide-react';
 import { Course } from '../types';
 import { COURSES, PRICING_PLANS } from '../constants';
 import { submitPhoneNumber } from '../services/mockBackend';
-
-// --- CONFIGURATION ---
-const RAZORPAY_KEY_ID = 'rzp_live_Wh4xEHePkQXqRO';
-
-declare global {
-    interface Window {
-        Razorpay?: new (options: any) => any;
-    }
-}
+import { openSelarCheckout, SELAR_CHECKOUT_URL } from '../services/razorpay';
 
 interface PaymentModalProps {
     isOpen: boolean;
@@ -23,9 +14,8 @@ interface PaymentModalProps {
 export const PaymentModal: React.FC<PaymentModalProps> = ({ isOpen, onClose }) => {
     const [viewState, setViewState] = useState<'LOADING' | 'FORM' | 'PROCESSING' | 'SUCCESS'>('LOADING');
     const [email, setEmail] = useState('');
-    const [phone, setPhone] = useState('');
+    const [name, setName] = useState('');
     const [emailError, setEmailError] = useState(false);
-    const [phoneError, setPhoneError] = useState(false);
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
     const [timeLeft, setTimeLeft] = useState({ h: 2, m: 14, s: 30 });
 
@@ -38,7 +28,7 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({ isOpen, onClose }) =
     const resetModal = () => {
         setViewState('LOADING');
         setEmail('');
-        setPhone('');
+        setName('');
         setErrorMessage(null);
         setTimeout(() => { setViewState('FORM'); }, 600);
     };
@@ -58,78 +48,22 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({ isOpen, onClose }) =
 
     const formatTime = (val: number) => val.toString().padStart(2, '0');
 
-    const handleRazorpayPay = async () => {
+    const handleSelarPay = async () => {
         if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
             setEmailError(true);
             setErrorMessage("Please enter a valid email address.");
             return;
         }
-        const cleanPhone = phone.replace(/\s/g, '');
-        if (!cleanPhone || !/^\+?\d{10,13}$/.test(cleanPhone)) {
-            setPhoneError(true);
-            setErrorMessage("Please enter a valid mobile number.");
-            return;
-        }
         setEmailError(false);
-        setPhoneError(false);
         setErrorMessage(null);
 
-        if (!window.Razorpay) {
-            setErrorMessage("Payment gateway failed to load. Please refresh the page.");
-            return;
-        }
-
-        const options = {
-            key: RAZORPAY_KEY_ID,
-            amount: 99900, // ₹999 in paise
-            currency: "INR",
-            name: "Avada",
-            description: "Complete Bundle — All 6 Courses",
-            image: "https://via.placeholder.com/150/f97316/FFFFFF?text=AV",
-            handler: function (response: any) {
-                console.log("Payment Successful", response);
-                setViewState('SUCCESS');
-                submitPhoneNumber(email, 'razorpay-success');
-
-                // Trigger order confirmation email silently
-                try {
-                    fetch("https://dhufnozehayzjlsmnvdl.supabase.co/functions/v1/send-order-email", {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({ email, orderId: response.razorpay_payment_id })
-                    }).catch(err => console.error("Email trigger failed:", err));
-                } catch (e) { }
-
-                setTimeout(() => { window.location.href = "https://architect.systeme.io/courses"; }, 2000);
-            },
-            prefill: {
-                email: email,
-                contact: phone.replace(/\s/g, ''),
-            },
-            theme: {
-                color: "#ea580c"
-            },
-            modal: {
-                ondismiss: function () {
-                    setViewState('FORM');
-                }
-            }
-        };
-
-        try {
-            setViewState('PROCESSING');
-            const rzp = new window.Razorpay(options);
-            rzp.on('payment.failed', function (response: any) {
-                console.error("Payment Failed", response.error);
-                setErrorMessage(response.error?.description || "Payment failed. Please try again.");
-                setViewState('FORM');
-            });
-            rzp.open();
-        } catch (error: any) {
-            console.error("Razorpay Error", error);
-            setErrorMessage("Payment gateway error. Please try again.");
-            setViewState('FORM');
-        }
+        submitPhoneNumber(email, 'selar-checkout-modal');
+        openSelarCheckout({
+            email,
+            name,
+            currency: 'NGN',
+            baseUrl: SELAR_CHECKOUT_URL
+        });
     };
 
     if (!isOpen) return null;
@@ -146,18 +80,18 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({ isOpen, onClose }) =
 
                     <div className="relative z-10">
                         <div className="flex items-center gap-2 mb-8 text-brand-success bg-white/5 w-fit px-3 py-1.5 rounded-full border border-white/10 backdrop-blur-sm">
-                            <ShieldCheck size={14} className="text-brand-success" /> <span className="text-[10px] font-bold uppercase tracking-widest text-white">Secure Payment</span>
+                            <ShieldCheck size={14} className="text-brand-success" /> <span className="text-[10px] font-bold uppercase tracking-widest text-white">Selar Checkout</span>
                         </div>
 
                         <h2 className="text-3xl font-display font-bold leading-tight mb-2 tracking-tight">Download Your<br />6 Courses Now</h2>
                         <div className="text-sm font-medium text-gray-400 mb-8 flex items-center gap-2">
                             <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-                            Instant download. Keep forever. Start earning more today.
+                            Instant access. Keep forever. Start earning more today.
                         </div>
 
                         <div className="flex items-baseline gap-3 mb-8 pb-8 border-b border-white/10">
-                            <span className="text-5xl font-black text-white tracking-tighter">₹999</span>
-                            <span className="text-xl text-gray-500 line-through font-medium">₹1,999</span>
+                            <span className="text-5xl font-black text-white tracking-tighter">₦37,000</span>
+                            <span className="text-xl text-gray-500 line-through font-medium">₦110,000</span>
                         </div>
 
                         <div className="space-y-5">
@@ -165,7 +99,7 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({ isOpen, onClose }) =
                                 'Download all 6 courses instantly',
                                 '70+ hours of premium training',
                                 '10,000+ textures & 3D models included',
-                                'Start earning ₹1,50,000+/month more'
+                                'Start earning ₦1,500,000+/month more'
                             ].map((item, i) => (
                                 <div key={i} className="flex items-center gap-3 text-sm font-medium text-gray-200">
                                     <div className="w-6 h-6 rounded-full bg-brand-primary flex items-center justify-center text-white shrink-0 shadow-lg shadow-brand-primary/20">
@@ -179,10 +113,10 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({ isOpen, onClose }) =
 
                     <div className="relative z-10 pt-6">
                         <div className="bg-white/5 p-4 rounded-2xl border border-white/10 backdrop-blur-sm">
-                            <p className="text-sm text-gray-300 italic mb-3">"I was skeptical, but 60 days later I went from ₹60,000/month to ₹3,50,000/month in freelance income. Best ₹999 I've ever spent."</p>
+                            <p className="text-sm text-gray-300 italic mb-3">"I was skeptical, but 60 days later I went from ₦250,000/month to ₦2,500,000/month in freelance income. Best ₦37,000 I've ever spent."</p>
                             <div className="flex items-center gap-2">
-                                <div className="w-6 h-6 rounded-full bg-gray-200 text-gray-900 flex items-center justify-center text-xs font-bold">VJ</div>
-                                <span className="text-xs font-bold text-white">Vikram J., Architect — Hyderabad</span>
+                                <div className="w-6 h-6 rounded-full bg-gray-200 text-gray-900 flex items-center justify-center text-xs font-bold">CO</div>
+                                <span className="text-xs font-bold text-white">Chidiebere O., Architect — Abuja</span>
                             </div>
                         </div>
                     </div>
@@ -192,10 +126,10 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({ isOpen, onClose }) =
                 <div className="flex-1 bg-white flex flex-col relative h-full">
                     <div className="px-6 md:px-8 py-4 md:py-5 border-b border-gray-100 flex items-center justify-between shrink-0 z-20 bg-white">
                         <div className="flex flex-col">
-                            <h3 className="text-lg md:text-xl font-bold text-gray-900 tracking-tight leading-none mb-1">Secure Checkout</h3>
+                            <h3 className="text-lg md:text-xl font-bold text-gray-900 tracking-tight leading-none mb-1">Selar Checkout</h3>
                             <div className="md:hidden flex items-center gap-1.5 bg-brand-success/10 px-2 py-0.5 rounded-full w-fit">
                                 <ShieldCheck size={12} className="text-brand-success" />
-                                <span className="text-[10px] font-black uppercase tracking-wider text-brand-success">Secure Payment</span>
+                                <span className="text-[10px] font-black uppercase tracking-wider text-brand-success">Selar Payment</span>
                             </div>
                         </div>
                         <button onClick={onClose} className="p-2 bg-gray-50 hover:bg-gray-100 rounded-full text-gray-400 hover:text-gray-900 transition-colors"><X size={20} /></button>
@@ -244,15 +178,6 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({ isOpen, onClose }) =
                                     </div>
                                 </div>
 
-                                {/* Mobile Number Input */}
-                                <div className="space-y-2">
-                                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 ml-1">Mobile Number</label>
-                                    <div className="relative">
-                                        <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
-                                        <input type="tel" value={phone} onChange={(e) => { setPhone(e.target.value); setPhoneError(false); setErrorMessage(null); }} placeholder="+91 98765 43210" className={`block w-full pl-12 pr-4 py-4 bg-gray-50 border-2 text-sm font-bold rounded-xl focus:border-brand-primary focus:bg-white outline-none transition-all ${phoneError ? 'border-red-500 bg-red-50' : 'border-gray-100'}`} />
-                                    </div>
-                                </div>
-
                                 {/* Error */}
                                 {errorMessage && (
                                     <div className="p-3 bg-red-50 border border-red-200 rounded-xl text-sm text-red-600 font-medium">
@@ -267,8 +192,8 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({ isOpen, onClose }) =
                                 <div className="w-20 h-20 rounded-full bg-green-500 flex items-center justify-center mb-4">
                                     <Check size={40} className="text-white" />
                                 </div>
-                                <h3 className="text-2xl font-bold text-gray-900 mb-2">Payment Successful!</h3>
-                                <p className="text-gray-500 text-sm">Redirecting to your courses...</p>
+                                <h3 className="text-2xl font-bold text-gray-900 mb-2">Redirecting to Selar...</h3>
+                                <p className="text-gray-500 text-sm">Please wait...</p>
                                 <Loader2 className="animate-spin text-brand-primary mt-4" size={24} />
                             </div>
                         )}
@@ -277,10 +202,10 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({ isOpen, onClose }) =
                     {/* Footer Button */}
                     {(viewState === 'FORM' || viewState === 'PROCESSING') && (
                         <div className="p-6 md:p-8 border-t border-gray-100 bg-white shrink-0">
-                            <button onClick={handleRazorpayPay} disabled={viewState === 'PROCESSING'} className="w-full py-3 sm:py-4 bg-brand-primary text-white rounded-xl font-black text-sm sm:text-lg uppercase tracking-widest sm:tracking-[0.2em] shadow-glow hover:shadow-glow-lg flex items-center justify-center gap-2 sm:gap-3 transition-all active:scale-[0.98]">
-                                {viewState === 'PROCESSING' ? <Loader2 className="animate-spin" /> : <><Download size={18} className="sm:w-5 sm:h-5" /> Download Courses • ₹999</>}
+                            <button onClick={handleSelarPay} disabled={viewState === 'PROCESSING'} className="w-full py-3 sm:py-4 bg-brand-primary text-white rounded-xl font-black text-sm sm:text-lg uppercase tracking-widest sm:tracking-[0.2em] shadow-glow hover:shadow-glow-lg flex items-center justify-center gap-2 sm:gap-3 transition-all active:scale-[0.98]">
+                                {viewState === 'PROCESSING' ? <Loader2 className="animate-spin" /> : <><Download size={18} className="sm:w-5 sm:h-5" /> Complete Order</>}
                             </button>
-                            <p className="text-center text-[10px] text-red-500 font-bold mt-3 uppercase tracking-widest">🎨 Holi Offer — Price returns to ₹1,999 when timer ends</p>
+                            <p className="text-center text-[10px] text-orange-600 font-bold mt-3 uppercase tracking-widest">🔥 Promo Offer — Price returns to ₦110,000 when timer ends</p>
                             <div className="flex items-center justify-center gap-4 mt-4 opacity-50">
                                 <div className="text-[9px] font-black text-gray-400 uppercase tracking-widest flex items-center gap-1.5"><ShieldCheck size={12} className="text-brand-success" /> 256-Bit SSL Secured Checkout</div>
                             </div>

@@ -1,13 +1,9 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { COURSES } from '../constants';
 import { submitPhoneNumber } from '../services/mockBackend';
-
-// --- CONFIGURATION ---
-const RAZORPAY_KEY_ID = 'rzp_live_Wh4xEHePkQXqRO';
-
-declare global { interface Window { Razorpay?: new (options: any) => any; } }
+import { openSelarCheckout, SELAR_CHECKOUT_URL } from '../services/razorpay';
+import { AnimatedPriceCut } from './LandingHelpers';
 
 /* ═══ Inline SVG Icons ═══ */
 const IC = {
@@ -45,12 +41,12 @@ const AnimatedNumber: React.FC<{ target: number; prefix?: string }> = ({ target,
 
 /* ═══ Checkout Testimonials ═══ */
 const CHECKOUT_TESTIMONIALS = [
-    { name: 'Arjun K.', role: 'Architecture Student', location: 'Mumbai', content: 'Went from zero SketchUp knowledge to delivering a full walk-through for my thesis in 3 weeks. The project-based approach is unmatched.' },
-    { name: 'Priya M.', role: 'Interior Designer', location: 'Bangalore', content: 'Was paying agencies ₹50,000 per render. Now I produce better 3D walkthroughs myself. Paid for itself on the first project.' },
-    { name: 'Vikram J.', role: 'Freelance Architect', location: 'Hyderabad', content: 'I was skeptical, but 60 days later I went from ₹60,000/month to ₹3,50,000/month in freelance income. Best ₹999 I\'ve ever spent.' },
-    { name: 'Sneha R.', role: 'Real Estate Developer', location: 'Pune', content: 'The V-Ray + Lumion courses alone are worth 100x the price. My property renders now look magazine-quality.' },
-    { name: 'Rohan M.', role: 'Design Student', location: 'Delhi', content: 'The AI rendering module blew my mind. I produce photorealistic concepts in minutes now. My professors think I hired a studio.' },
-    { name: 'Fatima N.', role: 'Junior Architect', location: 'Jaipur', content: 'Finally understand the full pipeline from AutoCAD drafting to cinematic renders. Got my first freelance client within 2 weeks.' },
+    { name: 'Babatunde A.', role: 'Studio Lead', location: 'Ikeja, Lagos', content: 'Went from zero SketchUp knowledge to delivering a full walkthrough for my project in 3 weeks. The project-based approach is unmatched.' },
+    { name: 'Chioma N.', role: 'Interior Designer', location: 'Lekki, Lagos', content: 'Was paying agencies ₦2,500,000 per render. Now I produce better 3D walkthroughs myself. Paid for itself on the first project.' },
+    { name: 'Chidiebere O.', role: 'Freelance Architect', location: 'Maitama, Abuja', content: 'I was skeptical, but 60 days later I went from ₦250,000/month to ₦2,500,000/month in freelance income. Best ₦37,000 I\'ve ever spent.' },
+    { name: 'Folake B.', role: 'Real Estate Visualizer', location: 'Port Harcourt', content: 'The V-Ray + Lumion courses alone are worth 100x the price. My property renders now look magazine-quality.' },
+    { name: 'Emeka K.', role: 'Design Student', location: 'Yaba, Lagos', content: 'The AI rendering module blew my mind. I produce photorealistic concepts in minutes now. My lecturers think I hired a studio.' },
+    { name: 'Amina Y.', role: 'Junior Architect', location: 'Kano', content: 'Finally understand the full pipeline from AutoCAD drafting to cinematic renders. Got my first freelance client within 2 weeks.' },
 ];
 
 /* ═══════════════════════════════════════════════════════════════════════ */
@@ -59,9 +55,7 @@ export const Checkout = () => {
     const [viewState, setViewState] = useState<'LOADING' | 'FORM' | 'PROCESSING' | 'SUCCESS'>('LOADING');
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
-    const [phone, setPhone] = useState('');
     const [emailError, setEmailError] = useState(false);
-    const [phoneError, setPhoneError] = useState(false);
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
     const [timeLeft, setTimeLeft] = useState({ h: 2, m: 14, s: 30 });
     const [activeTestimonial, setActiveTestimonial] = useState(0);
@@ -111,73 +105,16 @@ export const Checkout = () => {
         setEmailError(false); return true;
     };
 
-    const handleRazorpayPay = async () => {
+    const handleSelarPay = async () => {
         if (!validateEmail()) return;
-        const cleanPhone = phone.replace(/\s/g, '');
-        if (!cleanPhone || !/^\+?\d{10,13}$/.test(cleanPhone)) {
-            setPhoneError(true);
-            setErrorMessage("Please enter a valid mobile number.");
-            return;
-        }
-        setPhoneError(false);
-        if (!window.Razorpay) {
-            setErrorMessage("Payment gateway failed to load. Please refresh the page.");
-            return;
-        }
         setErrorMessage(null);
-
-        const options = {
-            key: RAZORPAY_KEY_ID,
-            amount: 99900, // ₹999 in paise
-            currency: "INR",
-            name: "Avada",
-            description: "Complete Bundle — All 6 Courses",
-            image: "https://via.placeholder.com/150/f97316/FFFFFF?text=AV",
-            handler: function (response: any) {
-                console.log("Payment Successful", response);
-                setViewState('SUCCESS');
-                submitPhoneNumber(email, 'razorpay-success');
-
-                // Trigger order confirmation email silently
-                try {
-                    fetch("https://dhufnozehayzjlsmnvdl.supabase.co/functions/v1/send-order-email", {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({ email, orderId: response.razorpay_payment_id })
-                    }).catch(err => console.error("Email trigger failed:", err));
-                } catch (e) { }
-
-                setTimeout(() => { window.location.href = "https://architect.systeme.io/courses"; }, 2000);
-            },
-            prefill: {
-                name: name,
-                email: email,
-                contact: phone.replace(/\s/g, ''),
-            },
-            theme: {
-                color: "#ea580c"
-            },
-            modal: {
-                ondismiss: function () {
-                    setViewState('FORM');
-                }
-            }
-        };
-
-        try {
-            setViewState('PROCESSING');
-            const rzp = new window.Razorpay(options);
-            rzp.on('payment.failed', function (response: any) {
-                console.error("Payment Failed", response.error);
-                setErrorMessage(response.error?.description || "Payment failed. Please try again.");
-                setViewState('FORM');
-            });
-            rzp.open();
-        } catch (error: any) {
-            console.error("Razorpay Error", error);
-            setErrorMessage("Payment gateway error. Please try again.");
-            setViewState('FORM');
-        }
+        submitPhoneNumber(email, 'selar-checkout');
+        openSelarCheckout({
+            email,
+            name,
+            currency: 'NGN',
+            baseUrl: SELAR_CHECKOUT_URL
+        });
     };
 
     /* ═══ LOADING ═══ */
@@ -193,8 +130,8 @@ export const Checkout = () => {
         <div className="min-h-screen flex items-center justify-center p-6" style={{ background: '#FDFAF6' }}>
             <div className="text-center max-w-md" style={{ animation: 'popScale 0.5s cubic-bezier(0.34,1.56,0.64,1) both' }}>
                 <div className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-5" style={{ background: 'linear-gradient(135deg, #f97316, #ea580c)', boxShadow: '0 0 30px rgba(249,115,22,0.3)' }}><IC.Check s={36} c="text-white" /></div>
-                <h2 className="text-2xl font-bold mb-2" style={{ fontFamily: "'Space Grotesk'", color: '#1e293b' }}>Payment Successful!</h2>
-                <p className="text-sm" style={{ color: '#64748b' }}>Redirecting to your courses...</p>
+                <h2 className="text-2xl font-bold mb-2" style={{ fontFamily: "'Space Grotesk'", color: '#1e293b' }}>Redirecting to Selar Checkout...</h2>
+                <p className="text-sm" style={{ color: '#64748b' }}>Please wait...</p>
                 <IC.Loader s={20} c="text-orange-500 mx-auto mt-4" />
             </div>
         </div>
@@ -221,7 +158,7 @@ export const Checkout = () => {
                     <div className="flex justify-center whitespace-nowrap">
                         <div className="flex items-center gap-2">
                             <span className="font-display font-black text-lg tracking-tight text-gray-900 uppercase" style={{ fontFamily: "'Space Grotesk'" }}>AVADA</span>
-                            <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest hidden sm:inline">Secure Checkout</span>
+                            <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest hidden sm:inline">Selar Checkout</span>
                         </div>
                     </div>
                     <div className="flex justify-end" />
@@ -246,7 +183,7 @@ export const Checkout = () => {
                 <div className={`text-center lg:text-left mb-3 lg:mb-0 lg:hidden transition-all duration-500 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
                     <div className="mb-2">
                         <div className="inline-flex items-center gap-1.5 bg-orange-50 text-orange-600 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border border-orange-100 mb-1">
-                            <IC.Sparkles s={10} />50% OFF — Limited
+                            <IC.Sparkles s={10} />Limited Promo
                         </div>
                         <h1 className="text-xl font-black text-gray-900 leading-[1.15] tracking-tight" style={{ fontFamily: "'Space Grotesk'" }}>
                             Start Designing & Rendering Today
@@ -270,13 +207,13 @@ export const Checkout = () => {
                         {/* Hero (Desktop only) */}
                         <div className="hidden lg:block space-y-4">
                             <div className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-50 to-amber-50 text-orange-600 text-[11px] font-bold uppercase tracking-[0.15em] px-4 py-2 rounded-full border border-orange-100 shadow-sm">
-                                <IC.Sparkles s={13} c="animate-pulse" /><span>50% OFF — Limited Bundle</span>
+                                <IC.Sparkles s={13} c="animate-pulse" /><span>Limited Promo Bundle</span>
                             </div>
                             <h1 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-black text-gray-900 leading-[1.1] tracking-tight" style={{ fontFamily: "'Space Grotesk'" }}>
                                 <span className="bg-gradient-to-r from-orange-500 to-amber-500 bg-clip-text text-transparent">Start Designing &<br />Rendering Today</span>
                             </h1>
                             <p className="text-gray-500 text-base sm:text-lg font-medium leading-relaxed max-w-lg mx-auto lg:mx-0">
-                                6 complete courses — from AutoCAD to AI rendering. Everything you need to produce cinematic walkthroughs and win ₹15,00,000 projects.
+                                6 complete courses — from AutoCAD to AI rendering. Everything you need to produce cinematic walkthroughs and win ₦15,000,000 projects.
                             </p>
                         </div>
 
@@ -349,9 +286,9 @@ export const Checkout = () => {
                                     <div className="hidden lg:block space-y-2">
                                         {[
                                             { label: '6 Complete Architecture Courses', icon: IC.BookOpen },
-                                            { label: '70+ Hours of Training', value: '₹1,50,000+', icon: IC.Award },
-                                            { label: '10,000+ Textures & 3D Models', value: '₹41,000', icon: IC.Users },
-                                            { label: 'Mentor Support & Certificate', value: '₹16,000', icon: IC.BadgeCheck },
+                                            { label: '70+ Hours of Training', value: '₦1,500,000+', icon: IC.Award },
+                                            { label: '10,000+ Textures & 3D Models', value: '₦410,000', icon: IC.Users },
+                                            { label: 'Mentor Support & Certificate', value: '₦160,000', icon: IC.BadgeCheck },
                                         ].map((item, i) => (
                                             <div key={i} className="flex items-center justify-between py-1.5">
                                                 <div className="flex items-center gap-2.5">
@@ -390,22 +327,18 @@ export const Checkout = () => {
                                             <span>Offer ends in</span>
                                             <span className="font-mono font-black text-white text-sm px-2.5 py-0.5 rounded-md" style={{ background: 'rgba(0,0,0,0.15)', backdropFilter: 'blur(4px)' }}>{fmt(timeLeft.h)}:{fmt(timeLeft.m)}:{fmt(timeLeft.s)}</span>
                                         </div>
-                                        <div className="flex items-baseline justify-center gap-2.5">
-                                            <span className="text-3xl lg:text-4xl font-black drop-shadow-sm">₹999</span>
-                                            <span className="text-base lg:text-lg text-white/50 line-through">₹1,999</span>
-                                            <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded-full" style={{ background: 'rgba(255,255,255,0.2)', backdropFilter: 'blur(4px)' }}>Save 50%</span>
-                                        </div>
+                                        <AnimatedPriceCut originalPrice="₦110,000" discountedPrice="₦37,000" />
                                     </div>
                                 </div>
 
-                                {/* Payment Form */}
+                                {/* Payment Form (No Phone Field) */}
                                 <div className="px-5 py-4 lg:px-6 lg:py-5 space-y-4">
                                     {/* Name */}
                                     <div>
                                         <label className="text-[11px] font-semibold uppercase tracking-wider mb-1.5 block text-gray-500">Name</label>
                                         <div className="relative">
                                             <IC.User s={15} c="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400" />
-                                            <input type="text" value={name} onChange={e => setName(e.target.value)} placeholder="Your name"
+                                            <input type="text" value={name} onChange={e => setName(e.target.value)} placeholder="Your full name"
                                                 className="block w-full pl-10 pr-4 py-3 text-sm rounded-lg outline-none transition-all bg-gray-50 border border-gray-200 text-gray-900 focus:border-orange-500 focus:ring-1 focus:ring-orange-500" />
                                         </div>
                                     </div>
@@ -422,18 +355,6 @@ export const Checkout = () => {
                                         </div>
                                     </div>
 
-                                    {/* Mobile Number */}
-                                    <div>
-                                        <label className="text-[11px] font-semibold uppercase tracking-wider mb-1.5 block text-gray-500">Mobile Number</label>
-                                        <div className="relative">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`absolute left-3.5 top-1/2 -translate-y-1/2 ${phoneError ? 'text-red-500' : 'text-gray-400'}`}><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
-                                            <input type="tel" value={phone}
-                                                onChange={e => { setPhone(e.target.value); setPhoneError(false); setErrorMessage(null); }}
-                                                placeholder={phoneError ? 'Enter valid number' : '+91 98765 43210'}
-                                                className={`block w-full pl-10 pr-4 py-3 text-sm rounded-lg outline-none transition-all ${phoneError ? 'bg-red-50 border border-red-500 text-red-600' : 'bg-gray-50 border border-gray-200 text-gray-900 focus:border-orange-500 focus:ring-1 focus:ring-orange-500'}`} />
-                                        </div>
-                                    </div>
-
                                     {/* Error */}
                                     {errorMessage && (
                                         <div className="p-3.5 rounded-xl flex items-start gap-3 bg-red-50 border border-red-200" style={{ animation: 'shakeX 0.4s ease' }}>
@@ -446,13 +367,13 @@ export const Checkout = () => {
                                     )}
                                 </div>
 
-                                {/* CTA Button */}
+                                {/* CTA Button - Selar Integration */}
                                 <div className="px-5 py-4 lg:px-6 border-t border-gray-100">
-                                    <button onClick={handleRazorpayPay} disabled={viewState === 'PROCESSING'}
+                                    <button onClick={handleSelarPay} disabled={viewState === 'PROCESSING'}
                                         className="w-full py-4 rounded-lg text-white font-bold text-sm uppercase tracking-wider flex items-center justify-center gap-2 transition-all active:scale-[0.98] disabled:opacity-50 hover:bg-orange-600 bg-orange-500 shadow-md">
-                                        {viewState === 'PROCESSING' ? <IC.Loader s={18} c="text-white" /> : <><span>Get Instant Access — ₹999</span><IC.Download s={16} /></>}
+                                        {viewState === 'PROCESSING' ? <IC.Loader s={18} c="text-white" /> : <><span>Complete Order</span><IC.Download s={16} /></>}
                                     </button>
-                                    <p className="text-center text-[10px] font-medium mt-2 text-gray-500">🎨 Holi Offer — Price returns to ₹1,999 when timer ends</p>
+                                    <p className="text-center text-[10px] font-medium mt-2 text-gray-500">🔥 Promo Offer — Price returns to ₦110,000 when timer ends</p>
                                     <div className="flex items-center justify-center gap-4 mt-2">
                                         <div className="flex items-center gap-1 text-[9px] font-medium uppercase tracking-wider text-gray-400"><IC.Shield s={9} c="text-orange-500" /> 7-Day Refund</div>
                                         <div className="flex items-center gap-1 text-[9px] font-medium uppercase tracking-wider text-gray-400"><IC.Lock s={9} c="text-orange-500" /> 256-Bit SSL</div>
@@ -461,10 +382,10 @@ export const Checkout = () => {
                                     {/* Payment Method Badges */}
                                     <div className="flex flex-wrap items-center justify-center gap-2 mt-3 pt-3 border-t border-gray-100">
                                         <span className="text-[9px] font-semibold text-gray-400 uppercase tracking-wider">Pay via</span>
-                                        <span className="px-2 py-0.5 rounded bg-green-50 border border-green-200 text-[9px] font-bold text-green-600">UPI</span>
+                                        <span className="px-2 py-0.5 rounded bg-purple-50 border border-purple-200 text-[9px] font-bold text-purple-600">Selar</span>
+                                        <span className="px-2 py-0.5 rounded bg-emerald-50 border border-emerald-200 text-[9px] font-bold text-emerald-600">Paystack</span>
                                         <span className="px-2 py-0.5 rounded bg-blue-50 border border-blue-200 text-[9px] font-bold text-blue-600">Cards</span>
-                                        <span className="px-2 py-0.5 rounded bg-purple-50 border border-purple-200 text-[9px] font-bold text-purple-600">Net Banking</span>
-                                        <span className="px-2 py-0.5 rounded bg-amber-50 border border-amber-200 text-[9px] font-bold text-amber-600">EMI</span>
+                                        <span className="px-2 py-0.5 rounded bg-amber-50 border border-amber-200 text-[9px] font-bold text-amber-600">Bank Transfer</span>
                                     </div>
                                 </div>
 
@@ -472,13 +393,13 @@ export const Checkout = () => {
                                 <div className="px-6 py-4 bg-gray-50/50 border-t border-gray-50 rounded-b-3xl">
                                     <div className="flex items-center justify-center gap-3">
                                         <div className="flex -space-x-2">
-                                            {['AK', 'PM', 'VJ'].map((initials, i) => (
+                                            {['BA', 'CN', 'CO'].map((initials, i) => (
                                                 <div key={i} className={`w-7 h-7 rounded-full border-2 border-white flex items-center justify-center text-[9px] font-bold shadow-sm ${i === 0 ? 'bg-orange-200 text-orange-700' : i === 1 ? 'bg-gray-300 text-gray-700' : 'bg-gray-900 text-white'}`}>{initials}</div>
                                             ))}
                                         </div>
                                         <div className="text-[11px]">
                                             <span className="font-bold text-gray-900"><AnimatedNumber target={23847} /> students</span>
-                                            <span className="text-gray-400 ml-1">enrolled across India</span>
+                                            <span className="text-gray-400 ml-1">enrolled across Nigeria</span>
                                         </div>
                                     </div>
                                 </div>

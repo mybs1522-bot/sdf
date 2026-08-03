@@ -1,6 +1,6 @@
 body {
-  background: #050505;
-  color: #fff;
+  background: #fafafa;
+  color: #0f172a;
   font-family: 'Inter', system-ui, sans-serif;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
@@ -8,6 +8,6 @@ body {
 }
 
 ::selection {
-  background: rgba(249, 115, 22, 0.3);
-  color: white;
+  background: rgba(249, 115, 22, 0.2);
+  color: #ea580c;
 }
