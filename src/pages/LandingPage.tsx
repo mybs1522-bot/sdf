@@ -190,7 +190,7 @@ const LandingPage: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 reveal">
               <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-xl bg-white group hover:border-orange-500 transition-all duration-300">
                 <img
-                  src="https://join.avadalearn.com/student1.jpg"
+                  src="https://afrca37k.vercel.app/student1.jpg"
                   alt="10,000+ Nigerian Students Showcase 1"
                   className="w-full h-auto object-cover group-hover:scale-[1.02] transition-transform duration-500"
                   loading="lazy"
@@ -198,7 +198,7 @@ const LandingPage: React.FC = () => {
               </div>
               <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-xl bg-white group hover:border-orange-500 transition-all duration-300">
                 <img
-                  src="https://join.avadalearn.com/student2.jpg"
+                  src="https://afrca37k.vercel.app/student2.jpg"
                   alt="10,000+ Nigerian Students Showcase 2"
                   className="w-full h-auto object-cover group-hover:scale-[1.02] transition-transform duration-500"
                   loading="lazy"
