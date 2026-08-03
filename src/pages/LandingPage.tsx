@@ -18,9 +18,16 @@ const LandingPage: React.FC = () => {
   const [loadVideo, setLoadVideo] = useState(false);
 
   useEffect(() => {
-    // Mount video after initial text paint for fast FCP/LCP
-    const timer = setTimeout(() => setLoadVideo(true), 100);
-    return () => clearTimeout(timer);
+    // Defer heavy iframe load until user scrolls, clicks, or idle state (prevents Lighthouse LCP 24s penalty)
+    const handleTrigger = () => setLoadVideo(true);
+    window.addEventListener('scroll', handleTrigger, { once: true, passive: true });
+    window.addEventListener('pointerdown', handleTrigger, { once: true });
+    const timer = setTimeout(() => setLoadVideo(true), 3500);
+    return () => {
+      window.removeEventListener('scroll', handleTrigger);
+      window.removeEventListener('pointerdown', handleTrigger);
+      clearTimeout(timer);
+    };
   }, []);
 
   useEffect(() => {
@@ -108,10 +115,11 @@ const LandingPage: React.FC = () => {
                     allowFullScreen={true}
                   />
                 ) : (
-                  <div className="absolute inset-0 bg-slate-900 flex items-center justify-center">
-                    <div className="w-12 h-12 rounded-full bg-orange-500/20 text-orange-500 flex items-center justify-center animate-pulse">
-                      <Play size={24} className="fill-orange-500 ml-1" />
+                  <div onClick={() => setLoadVideo(true)} className="absolute inset-0 bg-slate-900 flex flex-col items-center justify-center cursor-pointer group">
+                    <div className="w-16 h-16 rounded-full bg-orange-500 text-white flex items-center justify-center shadow-lg shadow-orange-500/40 group-hover:scale-110 transition-transform">
+                      <Play size={28} className="fill-white ml-1" />
                     </div>
+                    <span className="text-xs font-bold text-slate-300 mt-3 uppercase tracking-wider">Tap to Watch Overview Video</span>
                   </div>
                 )}
               </div>
