@@ -15,6 +15,13 @@ const LandingPage: React.FC = () => {
   const [timeLeft, setTimeLeft] = useState({ h: 3, m: 36, s: 20 });
   const [showStickyBar, setShowStickyBar] = useState(false);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
+  const [loadVideo, setLoadVideo] = useState(false);
+
+  useEffect(() => {
+    // Mount video after initial text paint for fast FCP/LCP
+    const timer = setTimeout(() => setLoadVideo(true), 100);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     const calc = () => { const D = (3 * 3600 + 36 * 60 + 20) * 1000, now = Date.now(), r = D - (now % D); setTimeLeft({ h: Math.floor((r / 3600000) % 24), m: Math.floor((r / 60000) % 60), s: Math.floor((r / 1000) % 60) }); };
@@ -92,14 +99,21 @@ const LandingPage: React.FC = () => {
 
               {/* Hero Video (Placed Directly Below Freelance Box) */}
               <div className="w-full max-w-4xl mb-8 rounded-2xl overflow-hidden border border-slate-200 shadow-2xl shadow-orange-500/10 bg-slate-900" style={{ position: 'relative', paddingTop: '56.25%' }}>
-                <iframe
-                  title="Course overview video"
-                  src="https://iframe.mediadelivery.net/embed/494628/81badf78-a3b0-42fa-9f23-9f7213d4185c?autoplay=true&loop=true&muted=true&preload=true&responsive=true"
-                  loading="eager"
-                  style={{ border: 'none', position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
-                  allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
-                  allowFullScreen={true}
-                />
+                {loadVideo ? (
+                  <iframe
+                    title="Course overview video"
+                    src="https://iframe.mediadelivery.net/embed/494628/81badf78-a3b0-42fa-9f23-9f7213d4185c?autoplay=true&loop=true&muted=true&preload=true&responsive=true"
+                    style={{ border: 'none', position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+                    allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+                    allowFullScreen={true}
+                  />
+                ) : (
+                  <div className="absolute inset-0 bg-slate-900 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-full bg-orange-500/20 text-orange-500 flex items-center justify-center animate-pulse">
+                      <Play size={24} className="fill-orange-500 ml-1" />
+                    </div>
+                  </div>
+                )}
               </div>
 
               {/* 3 Pillars Visual Mini-Cards */}
