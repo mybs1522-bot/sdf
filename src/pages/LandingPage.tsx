@@ -208,13 +208,21 @@ const LandingPage: React.FC = () => {
           </div>
         </section>
 
-        {/* ═══ AI TRUTH SECTION ═══ */}
+        {/* ═══ MONEY & FREE TOOLS TRUTH ═══ */}
         <section className="py-16 md:py-24 bg-slate-50">
           <div className="max-w-5xl mx-auto px-5">
             <div className="reveal text-center mb-12">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-orange-100 border border-orange-200 rounded-full mb-6"><Bot size={16} className="text-orange-600" /><span className="text-xs font-bold text-orange-700">THE AI REALITY CHECK</span></div>
-              <h2 className="text-3xl md:text-5xl font-display font-bold text-slate-900 tracking-tight mb-4">Everyone's Talking About AI.<br /><span className="text-orange-600">Here's What They're Not Telling You.</span></h2>
-              <p className="text-slate-600 text-base md:text-lg max-w-2xl mx-auto">AI will revolutionize rendering. But it has a fatal flaw that nobody mentions.</p>
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-emerald-100 border border-emerald-200 rounded-full mb-6">
+                <Award size={16} className="text-emerald-700" />
+                <span className="text-xs font-bold text-emerald-800 uppercase tracking-wider">UNMISSABLE GUARANTEE</span>
+              </div>
+              <h2 className="text-3xl md:text-5xl font-display font-bold text-slate-900 tracking-tight mb-4">
+                Stop Paying 100s of Dollars For Software.<br />
+                <span className="text-orange-600">Get Every Paid Tool 100% Free + ₦500,000 Projects.</span>
+              </h2>
+              <p className="text-slate-600 text-base md:text-lg max-w-2xl mx-auto">
+                While software companies charge ₦400,000+/year, we give you direct links, free student licenses, and allocate guaranteed ₦500,000 freelance projects upon completion.
+              </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {AI_TRUTH.map((item, i) => (
@@ -225,9 +233,9 @@ const LandingPage: React.FC = () => {
                 </div>
               ))}
             </div>
-            <div className="reveal text-center mt-10">
-              <p className="text-slate-800 text-lg font-semibold mb-2">This course teaches you the <span className="text-orange-600 font-bold">Hybrid Workflow</span>.</p>
-              <p className="text-slate-600 text-sm">You learn to design with precision. AI handles the heavy rendering. Together, you're 10x faster than either alone.</p>
+            <div className="reveal text-center mt-10 bg-orange-50 border border-orange-200 rounded-2xl p-6 max-w-3xl mx-auto">
+              <p className="text-slate-900 text-lg font-bold mb-1">🎁 Exclusive Student Perk: <span className="text-orange-600 font-extrabold">₦500,000 Freelance Project Guarantee</span></p>
+              <p className="text-slate-600 text-sm">Finish the 15-day training ➔ We assign real client freelance work worth ₦500,000 to your portfolio.</p>
             </div>
           </div>
         </section>
@@ -235,14 +243,14 @@ const LandingPage: React.FC = () => {
         {/* ═══ ALL-IN-ONE BRIDGE ═══ */}
         <section className="py-16 md:py-24 bg-white border-y border-slate-200">
           <div className="max-w-4xl mx-auto px-5 text-center">
-            <p className="text-slate-500 text-xs font-mono uppercase tracking-widest mb-4">Zero to Advanced. One Bundle. No Paid Software.</p>
+            <p className="text-slate-500 text-xs font-mono uppercase tracking-widest mb-4">SAVE 100s OF DOLLARS • GUARANTEED FREELANCE GIGS</p>
             <h2 className="text-3xl md:text-5xl font-display font-bold text-slate-900 mb-4 tracking-tight">
-              AutoCAD. SketchUp. V-Ray. Lumion. D5. <span className="text-orange-600">AI.</span>
+              AutoCAD. SketchUp. V-Ray. Lumion. D5. <span className="text-orange-600">Free Tools.</span>
             </h2>
-            <p className="text-slate-600 text-base md:text-lg max-w-2xl mx-auto mb-4">The entire architect's pipeline in one system. Every tool, every technique, every shortcut — from your first click to your first ₦4,000,000 walkthrough.</p>
-            <p className="text-sm font-bold text-emerald-700 mb-8 flex items-center justify-center gap-2"><CheckCircle size={16} className="text-emerald-600" /> All software links & free licenses included — you don't pay a penny for tools</p>
+            <p className="text-slate-600 text-base md:text-lg max-w-2xl mx-auto mb-4">The entire architect's money-making pipeline in one system. Save $400+ on software, learn to design in 15 days, and earn ₦500,000+ on your first gigs.</p>
+            <p className="text-sm font-bold text-emerald-700 mb-8 flex items-center justify-center gap-2"><CheckCircle size={16} className="text-emerald-600" /> All software links & free licenses included — you don't pay a single penny for software</p>
             <button onClick={openCheckout} className="px-8 py-4 bg-slate-900 text-white rounded-2xl font-bold text-base hover:bg-slate-800 transition-all inline-flex items-center gap-3 group whitespace-nowrap shadow-lg shadow-slate-900/10">
-              See What's Inside <ArrowRight className="group-hover:translate-x-1 transition-transform" size={16} />
+              Claim ₦37,000 Bundle & Free Software <ArrowRight className="group-hover:translate-x-1 transition-transform" size={16} />
             </button>
 
             {/* Course Preview Video */}

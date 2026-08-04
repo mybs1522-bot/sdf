@@ -104,11 +104,26 @@ export const FEAR_STATS = [
   { stat: '15 days', label: 'from zero experience to your first paid render — if you start now', icon: '⏳' },
 ];
 
-/* ─── AI TRUTH BOMBS ─── */
+/* ─── MONEY & FREE TOOLS REALITY ─── */
 export const AI_TRUTH = [
-  { title: 'AI CAN Render', desc: 'AI generates stunning photorealistic images in seconds. It handles lighting, materials, textures, and post-production — things that used to take hours.', verdict: 'TRUE', color: 'green' },
-  { title: 'AI CAN\'T Design', desc: 'AI doesn\'t understand structural integrity, clearances, building codes, client requirements, or spatial logic. It makes beautiful images of impossible buildings.', verdict: 'THE PROBLEM', color: 'red' },
-  { title: 'The Hybrid Wins', desc: 'YOU design accurately in AutoCAD + SketchUp. AI handles the rendering. Result: 10x faster output, zero compromise on accuracy. This is the future.', verdict: 'THE SOLUTION', color: 'orange' },
+  { 
+    title: 'PAID TOOLS FOR FREE ($100s Saved)', 
+    desc: 'Software companies charge 100s of dollars (₦400,000+/yr) for AutoCAD, SketchUp, V-Ray & Lumion. We give you direct links, free student licenses, and setup guides so you pay ₦0 for tools.', 
+    verdict: '100% FREE TOOLS', 
+    color: 'green' 
+  },
+  { 
+    title: 'GUARANTEED ₦500,000 FREELANCE PROJECTS', 
+    desc: 'Don\'t worry about finding clients. When you complete the 15-day training, we hand you real client freelance projects worth up to ₦500,000 NGN directly.', 
+    verdict: 'GUARANTEED GIGS', 
+    color: 'orange' 
+  },
+  { 
+    title: 'HIGH-PAYING FREELANCE & JOBS', 
+    desc: 'Charge ₦50,000–₦150,000 per 3D render or ₦800,000–₦4,000,000 per walkthrough. Finish in hours and get paid fast without endless revisions.', 
+    verdict: 'HIGH EARNINGS', 
+    color: 'green' 
+  },
 ];
 
 /* ─── LOGO ─── */
