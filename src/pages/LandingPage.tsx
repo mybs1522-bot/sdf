@@ -294,20 +294,23 @@ const LandingPage: React.FC = () => {
           </div>
         </section>
 
-        {/* ═══ MANIFESTO ═══ */}
-        <section className="py-16 md:py-28 bg-white">
+        {/* ═══ MANIFESTO: UNSTOPPABLE EARNING ADVANTAGE ═══ */}
+        <section className="py-16 md:py-24 bg-white">
           <div className="max-w-3xl mx-auto px-5">
-            <div className="reveal text-center mb-12">
-              <p className="text-orange-600 text-xs font-mono uppercase tracking-widest mb-4">A message from the instructor</p>
-              <h2 className="text-3xl md:text-5xl font-serif italic text-slate-900 mb-8 leading-snug">"I've watched this industry punish talented people who can't visualize their ideas."</h2>
+            <div className="reveal text-center mb-10">
+              <p className="text-orange-600 text-xs font-mono uppercase tracking-widest mb-3">HOW TO MAKE ₦500,000+ IN YOUR FIRST MONTH</p>
+              <h2 className="text-3xl md:text-5xl font-display font-bold text-slate-900 mb-6 leading-tight">
+                "Software Companies Charge $100s. Universities Charge Millions. <span className="text-orange-600">You Get It All For ₦37,000.</span>"
+              </h2>
             </div>
-            <div className="reveal space-y-6 text-slate-600 text-base md:text-lg leading-relaxed">
-              <p>Here's the truth nobody tells you: <strong className="text-slate-900">design skill alone doesn't win clients anymore.</strong></p>
-              <p>The architect who shows cinematic walkthroughs wins. The designer who renders photorealistic images wins. The freelancer who delivers in 2 days instead of 2 weeks wins. Every. Single. Time.</p>
-              <p>And now? <strong className="text-red-600">AI is accelerating this gap.</strong> Designers who learn the AI hybrid workflow are charging 3x more. Those who don't are watching their inbox go quiet.</p>
-              <p>Universities don't teach you these tools. YouTube gives you fragments. Expensive courses charge ₦1,500,000+ and still leave you struggling. Meanwhile, your competitors are getting faster every month.</p>
-              <p>So I built this system. <strong className="text-slate-900">Six courses. Every tool in the pipeline. Zero paid software required.</strong> We even provide the software links, free licenses, and 10,000+ assets.</p>
-              <p className="text-slate-900 font-semibold text-lg md:text-xl border-l-4 border-orange-500 pl-4 bg-orange-50/50 py-3 rounded-r-xl">The question isn't whether you can afford ₦37,000. It's whether you can afford to keep falling behind while 10,000+ Nigerian students are learning the exact skills that get people hired, promoted, and paid.</p>
+            <div className="reveal space-y-5 text-slate-700 text-base md:text-lg leading-relaxed">
+              <p>Here's the brutal truth: <strong className="text-slate-900">clients don't buy degrees — they buy fast 3D visuals and photorealistic renders.</strong></p>
+              <p>The freelancer who delivers 3D renders in 2 hours gets paid <strong className="text-emerald-700 font-bold">₦150,000 per image</strong>. The studio offering 3D walkthroughs closes <strong className="text-emerald-700 font-bold">₦4,000,000 deals</strong>.</p>
+              <p>You don't need to spend ₦400,000/year on software licenses. <strong className="text-orange-600">We give you direct download links, free student licenses, and 100% free setups for every single software tool.</strong></p>
+              <p>Plus, the moment you complete the 15 days, <strong className="text-slate-900 border-b-2 border-orange-500">we allocate guaranteed ₦500,000 freelance client projects directly to you</strong> so you earn back 13x your enrollment fee immediately.</p>
+              <div className="text-slate-900 font-bold text-lg border-l-4 border-orange-500 pl-4 bg-orange-50/80 py-4 rounded-r-2xl">
+                ⚡ 100% Free Software Included • Guaranteed ₦500,000 Freelance Project Allocation • 15-Day Mastery Guarantee
+              </div>
             </div>
           </div>
         </section>
@@ -315,63 +318,26 @@ const LandingPage: React.FC = () => {
         {/* ═══ FRICTION GRID ═══ */}
         <section className="py-16 md:py-24 bg-slate-50">
           <div className="max-w-5xl mx-auto px-5">
-            <div className="reveal text-center mb-12"><h2 className="text-3xl md:text-5xl font-display font-bold text-slate-900 tracking-tight mb-4">The Old Way vs. <span className="text-orange-600">The Hybrid System</span></h2></div>
+            <div className="reveal text-center mb-12">
+              <h2 className="text-3xl md:text-5xl font-display font-bold text-slate-900 tracking-tight mb-3">The Old Way vs. <span className="text-orange-600">This High-Income System</span></h2>
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="reveal bg-red-50/40 border border-red-200 rounded-2xl p-8 shadow-sm">
-                <div className="flex items-center gap-3 mb-6"><div className="w-10 h-10 rounded-xl bg-red-100 flex items-center justify-center"><X size={20} className="text-red-600" /></div><h3 className="text-xl font-bold text-red-800">Still Doing This?</h3></div>
+              <div className="reveal bg-red-50/50 border border-red-200 rounded-2xl p-8 shadow-sm">
+                <div className="flex items-center gap-3 mb-6"><div className="w-10 h-10 rounded-xl bg-red-100 flex items-center justify-center"><X size={20} className="text-red-600" /></div><h3 className="text-xl font-bold text-red-800">The Expensive Old Way</h3></div>
                 <ul className="space-y-4">
-                  {['Googling random tutorials that contradict each other', 'Paying ₦1,500,000+ for university courses that don\'t cover AI', '4 hours on a floor plan. Your competitor does it in 40 minutes.', 'Handing clients flat PDFs. They hire the person with 3D walkthroughs.', 'Paying ₦400,000/year for software you could get free', 'Graduating without a single portfolio-ready render'].map((item, i) => (
+                  {['Paying $400+/year (₦400,000+) for expensive software licenses', 'Paying ₦1,500,000+ for university courses that don\'t get you hired', '4 hours on a 2D floor plan that clients ignore', 'Handing clients flat PDFs while competitors present 3D video tours', 'Struggling to find paying freelance clients on your own', 'Graduating without a single high-paying client'].map((item, i) => (
                     <li key={i} className="flex items-start gap-3 text-slate-600 text-sm"><X size={14} className="text-red-500 mt-1 shrink-0" />{item}</li>
                   ))}
                 </ul>
               </div>
-              <div className="reveal bg-orange-50/40 border border-orange-200 rounded-2xl p-8 shadow-sm">
-                <div className="flex items-center gap-3 mb-6"><div className="w-10 h-10 rounded-xl bg-orange-100 flex items-center justify-center"><CheckCircle size={20} className="text-orange-600" /></div><h3 className="text-xl font-bold text-slate-900">With This System</h3></div>
+              <div className="reveal bg-orange-50/50 border border-orange-200 rounded-2xl p-8 shadow-sm">
+                <div className="flex items-center gap-3 mb-6"><div className="w-10 h-10 rounded-xl bg-orange-100 flex items-center justify-center"><CheckCircle size={20} className="text-orange-600" /></div><h3 className="text-xl font-bold text-slate-900">With This ₦37,000 System</h3></div>
                 <ul className="space-y-4">
-                  {['Structured pipeline: AutoCAD → SketchUp → V-Ray → Lumion → D5 → AI', 'AI handles your rendering. You handle the design. 10x output.', '15 days to a professional portfolio — even from zero', 'All software provided FREE — no expensive licenses ever', '10,000+ textures, models, AI prompts included', 'Mentor support when you\'re stuck at 11pm before a deadline'].map((item, i) => (
-                    <li key={i} className="flex items-start gap-3 text-slate-700 text-sm"><CheckCircle size={14} className="text-orange-600 mt-1 shrink-0" />{item}</li>
+                  {['ALL software tools provided 100% FREE (Save $100s today)', 'GUARANTEED ₦500,000 freelance project allocation upon completion', 'Charge ₦50,000–₦150,000 per 3D render image delivered in 2 hours', 'Create ₦4,000,000 cinematic 3D video walkthroughs that close deals', '10,000+ textures, 3D models & prompt vault included 100% free', 'Direct mentor access to get you hired or freelancing immediately'].map((item, i) => (
+                    <li key={i} className="flex items-start gap-3 text-slate-800 font-medium text-sm"><CheckCircle size={14} className="text-orange-600 mt-1 shrink-0" />{item}</li>
                   ))}
                 </ul>
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ═══ SOUND FAMILIAR ═══ */}
-        <section className="py-16 md:py-24 bg-white">
-          <div className="max-w-4xl mx-auto px-5">
-            <div className="reveal text-center mb-12">
-              <h2 className="text-3xl md:text-5xl font-display font-bold text-slate-900 tracking-tight mb-4">Be Honest. <span className="text-orange-600">Is This You?</span></h2>
-              <p className="text-slate-500 text-sm">Every week you don't fix this, someone hungrier does.</p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-              {PROBLEM_POINTS.map((point, i) => (
-                <div key={i} className="reveal bg-slate-50 border border-slate-200 rounded-2xl p-6 flex items-start gap-4 hover:border-orange-300 transition-all shadow-2xs">
-                  <span className="text-3xl">{point.emoji}</span>
-                  <p className="text-slate-700 text-sm md:text-base leading-relaxed">{point.text}</p>
-                </div>
-              ))}
-            </div>
-            <div className="reveal text-center mt-10">
-              <p className="text-slate-600 text-sm">If you checked even ONE of these — <strong className="text-slate-900">this system was built for you.</strong></p>
-            </div>
-          </div>
-        </section>
-
-        {/* ═══ WHO IS THIS FOR ═══ */}
-        <section className="py-16 md:py-24 bg-slate-50">
-          <div className="max-w-4xl mx-auto px-5 text-center">
-            <div className="reveal">
-              <h2 className="text-3xl md:text-5xl font-display font-bold text-slate-900 mb-10 tracking-tight">If You're Any of These, <span className="text-orange-600">You're Already Behind.</span></h2>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-              {INDUSTRIES.map((ind, i) => (
-                <div key={i} className="reveal bg-white border border-slate-200 rounded-xl p-5 hover:border-orange-300 transition-all group text-left shadow-xs">
-                  <div className="text-3xl mb-3">{ind.icon}</div>
-                  <span className="text-sm font-bold text-slate-900 block mb-1">{ind.label}</span>
-                  <span className="text-xs text-slate-500">{ind.hook}</span>
-                </div>
-              ))}
             </div>
           </div>
         </section>
@@ -380,16 +346,16 @@ const LandingPage: React.FC = () => {
         <section className="py-16 md:py-24 bg-white">
           <div className="max-w-4xl mx-auto px-5 text-center">
             <div className="reveal">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-emerald-50 border border-emerald-200 rounded-full mb-6"><CheckCircle size={16} className="text-emerald-600" /><span className="text-xs font-bold text-emerald-800">NO PAID SOFTWARE REQUIRED</span></div>
-              <h2 className="text-3xl md:text-5xl font-display font-bold text-slate-900 mb-6 tracking-tight">"But I Can't Afford Expensive Software..."</h2>
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-emerald-50 border border-emerald-200 rounded-full mb-6"><CheckCircle size={16} className="text-emerald-600" /><span className="text-xs font-bold text-emerald-800">SAVE $100s ON SOFTWARE</span></div>
+              <h2 className="text-3xl md:text-5xl font-display font-bold text-slate-900 mb-6 tracking-tight">"Software Costs 100s of Dollars..."<br /><span className="text-orange-600">You Get Every Tool 100% Free.</span></h2>
               <p className="text-slate-600 text-base md:text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
-                That excuse dies today. <strong className="text-slate-900">Every software in this system is available for free.</strong> We provide direct links to official free versions, student licenses, and free alternatives. SketchUp, AutoCAD, D5 Render — all free. Even V-Ray and Lumion have free student editions.
+                That excuse dies today. <strong className="text-slate-900">Every single software in this pipeline is provided for free.</strong> We provide direct download links, free student licenses, and setup guides for SketchUp, AutoCAD, D5, V-Ray, and Lumion. You don't pay a single dollar for software!
               </p>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
                 {[
-                  { icon: <Cpu size={24} />, title: 'Software Provided', desc: 'Direct links to every free/student version. No hunting. No piracy. Legit and ready.' },
-                  { icon: <Sparkles size={24} />, title: 'AI Tools = Free', desc: 'The AI rendering tools we teach are completely free. ₦0/month. Replace expensive subscriptions.' },
-                  { icon: <Award size={24} />, title: 'Lifetime Access', desc: 'Enroll once, access forever. Every update, every new module — free for life.' }
+                  { icon: <Cpu size={24} />, title: 'Free Software Links', desc: 'Direct links & setup guides for AutoCAD, SketchUp, V-Ray & Lumion. Pay $0.' },
+                  { icon: <Sparkles size={24} />, title: '₦500k Freelance Gigs', desc: 'Guaranteed ₦500,000 project allocation handed to you upon 15-day completion.' },
+                  { icon: <Award size={24} />, title: 'Lifetime Updates', desc: 'Pay ₦37,000 once. Keep access to all courses, software links & assets forever.' }
                 ].map((item, i) => (
                   <div key={i} className="reveal bg-slate-50 border border-slate-200 rounded-2xl p-6 text-left shadow-2xs">
                     <div className="w-12 h-12 rounded-xl bg-emerald-100 flex items-center justify-center mb-4 text-emerald-600">{item.icon}</div>
@@ -398,7 +364,7 @@ const LandingPage: React.FC = () => {
                   </div>
                 ))}
               </div>
-              <p className="text-orange-600 font-bold text-sm">The only investment is ₦37,000 and 15 days of your time. Everything else is provided.</p>
+              <p className="text-orange-600 font-black text-base">Your total investment today is just ₦37,000. All software ($400+ value) + ₦500,000 project allocation are included!</p>
             </div>
           </div>
         </section>
@@ -460,26 +426,29 @@ const LandingPage: React.FC = () => {
           </div>
         </section>
 
-        {/* ═══ THE MATH ═══ */}
+        {/* ═══ THE MATH: UNBEATABLE RETURN ON INVESTMENT ═══ */}
         <section className="py-16 md:py-24 bg-white">
           <div className="max-w-5xl mx-auto px-5">
-            <div className="reveal text-center mb-12"><h2 className="text-3xl md:text-5xl font-display font-bold text-slate-900 tracking-tight">The Math <span className="text-orange-600">Doesn't Lie</span></h2></div>
+            <div className="reveal text-center mb-12">
+              <h2 className="text-3xl md:text-5xl font-display font-bold text-slate-900 tracking-tight">The Math <span className="text-orange-600">Is Unbeatable</span></h2>
+              <p className="text-slate-500 text-sm mt-2">Spend ₦37,000 today ➔ Save $400+ on software + Get ₦500,000 guaranteed freelance project allocation</p>
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="reveal bg-red-50/30 border border-red-200 rounded-2xl p-8 shadow-sm">
-                <h3 className="text-lg font-bold text-red-700 mb-6 font-mono uppercase tracking-wider">The Expensive Way</h3>
+              <div className="reveal bg-red-50/40 border border-red-200 rounded-2xl p-8 shadow-sm">
+                <h3 className="text-lg font-bold text-red-700 mb-6 font-mono uppercase tracking-wider">The Expensive Traditional Way</h3>
                 <div className="space-y-4">
-                  {[['University Arch-Viz Course', '₦1,500,000 – ₦4,000,000'], ['Premium Software Licenses', '₦400,000+/year'], ['Outsourced Renders', '₦2,500,000/video'], ['Random YouTube (your time)', '100+ hours wasted'], ['Lost Clients (flat PDFs)', '₦₦₦₦ uncountable']].map(([l, c], i) => (
+                  {[['University Arch-Viz Degree', '₦1,500,000 – ₦4,000,000'], ['Software License Subscriptions', '$400+/year (₦400,000+)'], ['Outsourced Render Fees', '₦2,500,000/video'], ['Finding Freelance Clients', 'Months of zero income'], ['Lost High-Paying Deals', 'Uncountable millions']].map(([l, c], i) => (
                     <div key={i} className="flex justify-between items-center py-2 border-b border-slate-200"><span className="text-slate-600 text-sm">{l}</span><span className="text-slate-800 text-sm font-medium">{c}</span></div>
                   ))}
                 </div>
               </div>
-              <div className="reveal bg-emerald-50/30 border border-emerald-200 rounded-2xl p-8 shadow-sm">
-                <h3 className="text-lg font-bold text-emerald-700 mb-6 font-mono uppercase tracking-wider">This System</h3>
+              <div className="reveal bg-emerald-50/40 border border-emerald-200 rounded-2xl p-8 shadow-sm">
+                <h3 className="text-lg font-bold text-emerald-700 mb-6 font-mono uppercase tracking-wider">This System (Today Only)</h3>
                 <div className="space-y-4">
-                  {[['All 6 Courses (Zero to Advanced)', '₦37,000'], ['All Software (Free Licenses)', '₦0'], ['10,000+ Textures & Models', '₦0 (included)'], ['AI Prompt Vault & Tools', '₦0 (included)'], ['Mentor Support + Diploma', '₦0 (included)'], ['Lifetime Access + Updates', '₦0 (forever)']].map(([l, c], i) => (
-                    <div key={i} className="flex justify-between items-center py-2 border-b border-slate-200"><span className="text-slate-700 text-sm">{l}</span><span className="text-emerald-700 text-sm font-bold">{c}</span></div>
+                  {[['All 6 Complete Mastery Courses', '₦37,000'], ['All 5 Software Links & Setup Guides', '₦0 (100% FREE)'], ['Guaranteed ₦500,000 Freelance Project', '₦0 (INCLUDED FREE)'], ['10,000+ Texture & 3D Model Library', '₦0 (INCLUDED FREE)'], ['Direct Mentor Support & Certificate', '₦0 (INCLUDED FREE)'], ['Lifetime Access + Direct Updates', '₦0 (INCLUDED FREE)']].map(([l, c], i) => (
+                    <div key={i} className="flex justify-between items-center py-2 border-b border-slate-200"><span className="text-slate-700 text-sm font-medium">{l}</span><span className="text-emerald-700 text-sm font-black">{c}</span></div>
                   ))}
-                  <div className="flex justify-between items-center pt-2"><span className="text-slate-900 font-bold text-lg">Total Investment</span><span className="text-emerald-700 font-black text-2xl">₦37,000</span></div>
+                  <div className="flex justify-between items-center pt-3 border-t border-emerald-300"><span className="text-slate-900 font-extrabold text-lg">Total Investment Today</span><span className="text-emerald-700 font-black text-3xl">₦37,000</span></div>
                 </div>
               </div>
             </div>
@@ -487,149 +456,33 @@ const LandingPage: React.FC = () => {
         </section>
 
         {/* ═══ MID-SCROLL CTA ═══ */}
-        <CallToActionWidget timeLeft={timeLeft} onClick={openCheckout} headline="Still thinking?" subtext="10,000+ Nigerian students already made this decision. The only question is whether you'll join them today — or wish you had." />
-
-        {/* ═══ INCOME TIERS ═══ */}
-        <section className="py-16 md:py-24 bg-slate-50">
-          <div className="max-w-4xl mx-auto px-5">
-            <div className="reveal text-center mb-12">
-              <h2 className="text-3xl md:text-5xl font-display font-bold text-slate-900 tracking-tight mb-4">What You Could <span className="text-orange-600">Earn</span></h2>
-              <p className="text-slate-500 text-sm">Real numbers. Real students. The ₦37,000 pays for itself on your first gig.</p>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-              {INCOME_TIERS.map((tier, i) => (
-                <div key={i} className="reveal bg-white border border-slate-200 rounded-2xl p-6 hover:border-orange-300 transition-all shadow-sm">
-                  <div className="flex items-center gap-3 mb-4"><span className="text-3xl">{tier.icon}</span><span className="text-sm font-bold text-slate-900">{tier.label}</span></div>
-                  <div className="flex items-center gap-4">
-                    <div><p className="text-[10px] font-mono text-slate-400 uppercase mb-1">Before</p><p className="text-slate-400 text-sm line-through">{tier.before}</p></div>
-                    <ArrowRight size={16} className="text-orange-600" />
-                    <div><p className="text-[10px] font-mono text-orange-600 uppercase mb-1">After</p><p className="text-slate-900 text-sm font-bold">{tier.after}</p></div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ═══ 6 COURSES ═══ */}
-        <section className="py-16 md:py-24 bg-white">
-          <div className="max-w-5xl mx-auto px-5">
-            <div className="reveal text-center mb-12">
-              <h2 className="text-3xl md:text-5xl font-display font-bold text-slate-900 tracking-tight">6 Courses. One Pipeline. <span className="text-orange-600">Total Mastery.</span></h2>
-              <p className="text-slate-500 text-sm mt-2">Each course includes free software, project files, and mentor support</p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {COURSES.map((course) => (
-                <div key={course.id} className="reveal bg-slate-50 border border-slate-200 rounded-2xl overflow-hidden hover:border-orange-300 transition-all group shadow-2xs">
-                  <div className="aspect-[4/3] overflow-hidden bg-slate-200 relative">
-                    <img src={course.imageUrl} alt={course.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                    <div className="absolute top-3 left-3 bg-slate-900/80 backdrop-blur-sm px-3 py-1 rounded-full"><span className="text-[10px] font-bold text-orange-400 uppercase tracking-wider">{course.software}</span></div>
-                    <div className="absolute top-3 right-3 bg-slate-900/80 backdrop-blur-sm px-3 py-1 rounded-full"><span className="text-[10px] font-bold text-white">{course.students} students</span></div>
-                  </div>
-                  <div className="p-5">
-                    <h3 className="text-lg font-bold text-slate-900 mb-2">{course.title}</h3>
-                    <p className="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-2">{course.description}</p>
-                    <ul className="space-y-2">{course.learningPoints.map((p, j) => (<li key={j} className="flex items-start gap-2 text-xs text-slate-600"><CheckCircle2 size={12} className="text-orange-600 mt-0.5 shrink-0" />{p}</li>))}</ul>
-                    <div className="mt-4 flex items-center justify-between">
-                      <p className="text-orange-600 text-xs font-semibold">{course.workflowImpact}</p>
-                      <span className="text-[10px] text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded">FREE SOFTWARE</span>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ═══ 9 PHASES ═══ */}
-        <section className="py-16 md:py-24 bg-slate-50">
-          <div className="max-w-5xl mx-auto px-5">
-            <div className="reveal text-center mb-12"><h2 className="text-3xl md:text-5xl font-display font-bold text-slate-900 tracking-tight">9 Phases. Zero to <span className="text-orange-600">Advanced.</span></h2></div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {PHASE_DATA.map((phase, i) => (
-                <div key={i} className="reveal bg-white border border-slate-200 rounded-2xl p-5 hover:border-orange-300 transition-all shadow-xs">
-                  <div className="flex items-center gap-3 mb-3"><span className="text-3xl font-display font-black text-orange-400">{phase.phase}</span><h3 className="text-sm font-bold text-slate-900">{phase.title}</h3></div>
-                  <p className="text-xs text-slate-600 leading-relaxed">{phase.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ═══ USE CASES ═══ */}
-        <section className="py-16 md:py-24 bg-white">
-          <div className="max-w-5xl mx-auto px-5">
-            <div className="reveal text-center mb-12"><h2 className="text-3xl md:text-5xl font-display font-bold text-slate-900 tracking-tight">What Will You Do <span className="text-orange-600">With These Skills?</span></h2></div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {BUSINESS_MODULES.map((mod, i) => (
-                <div key={i} className="reveal bg-slate-50 border border-slate-200 rounded-2xl p-6 flex items-start gap-5 hover:border-orange-300 transition-all shadow-2xs">
-                  <div className="text-3xl">{mod.icon}</div>
-                  <div><h3 className="text-lg font-bold text-slate-900 mb-2">{mod.title}</h3><p className="text-slate-600 text-sm leading-relaxed">{mod.description}</p></div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+        <CallToActionWidget timeLeft={timeLeft} onClick={openCheckout} headline="Claim Your Free Software & ₦500,000 Project Allocation" subtext="10,000+ Nigerian students already enrolled. Don't pay ₦400,000/year for software when you can get everything for ₦37,000 today." />
 
         {/* ═══ VALUE STACK ═══ */}
         <section className="py-16 md:py-24 bg-slate-50">
           <div className="max-w-3xl mx-auto px-5">
-            <div className="reveal text-center mb-12"><h2 className="text-3xl md:text-5xl font-display font-bold text-slate-900 tracking-tight mb-4">Everything You Get <span className="text-orange-600">For ₦37,000</span></h2></div>
+            <div className="reveal text-center mb-12">
+              <h2 className="text-3xl md:text-5xl font-display font-bold text-slate-900 tracking-tight mb-3">Everything You Get <span className="text-orange-600">For ₦37,000</span></h2>
+              <p className="text-slate-500 text-sm">Save $100s on software + Get allocated ₦500,000 freelance projects instantly</p>
+            </div>
             <div className="reveal bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm">
-              {VALUE_STACK_ITEMS.map((item, i) => (
-                <div key={i} className={`flex justify-between items-center px-6 py-4 ${i !== VALUE_STACK_ITEMS.length - 1 ? 'border-b border-slate-100' : ''}`}>
-                  <div className="flex items-center gap-3"><CheckCircle size={16} className="text-orange-600 shrink-0" /><span className="text-sm text-slate-700 font-medium">{item.name}</span></div>
+              {[
+                { name: 'All 6 Architectural & Render Mastery Courses', value: '₦450,000' },
+                { name: 'Direct Download Links & Free Licenses for AutoCAD, SketchUp, V-Ray, Lumion & D5', value: '₦400,000 ($400+)' },
+                { name: 'Guaranteed ₦500,000 Freelance Client Project Allocation', value: '₦500,000' },
+                { name: '10,000+ Textures, 3D Models & Scene Files', value: '₦250,000' },
+                { name: 'AI High-Speed Rendering Prompt Vault', value: '₦150,000' },
+                { name: '1-on-1 Mentor Job & Client Support', value: '₦200,000' },
+              ].map((item, i) => (
+                <div key={i} className="flex justify-between items-center px-6 py-4 border-b border-slate-100">
+                  <div className="flex items-center gap-3"><CheckCircle size={16} className="text-orange-600 shrink-0" /><span className="text-sm text-slate-800 font-medium">{item.name}</span></div>
                   <span className="text-sm font-bold text-slate-400 line-through">{item.value}</span>
                 </div>
               ))}
               <div className="bg-orange-50 border-t border-orange-200 px-6 py-5 flex justify-between items-center">
                 <span className="text-slate-900 font-bold">You Pay Today</span>
-                <div className="flex items-center gap-3"><span className="text-slate-400 line-through text-sm">₦2,740,000</span><span className="text-2xl font-display font-black text-orange-600">₦37,000</span></div>
+                <div className="flex items-center gap-3"><span className="text-slate-400 line-through text-sm">₦1,950,000</span><span className="text-3xl font-display font-black text-orange-600">₦37,000</span></div>
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ═══ MENTORS ═══ */}
-        <section className="py-16 md:py-24 bg-white">
-          <div className="max-w-4xl mx-auto px-5">
-            <div className="reveal text-center mb-12"><h2 className="text-3xl md:text-5xl font-display font-bold text-slate-900 tracking-tight">Your <span className="text-orange-600">Mentors</span></h2></div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {MENTORS.map((mentor, i) => (
-                <div key={i} className="reveal bg-slate-50 border border-slate-200 rounded-2xl p-6 shadow-sm">
-                  <div className="flex items-center gap-3 mb-4"><div className="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 font-bold text-lg">{mentor.name[0]}</div><div><h3 className="text-lg font-bold text-slate-900">{mentor.name}</h3><p className="text-xs text-slate-500 font-medium">{mentor.title}</p></div></div>
-                  <p className="text-slate-600 text-sm mb-4">{mentor.bio}</p>
-                  <div className="flex items-center gap-4 text-xs text-slate-500"><span className="flex items-center gap-1 font-bold text-slate-700"><Star size={12} className="text-orange-500 fill-orange-500" /> {mentor.rating}</span><span>{mentor.students} students</span></div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ═══ TESTIMONIALS CAROUSEL ═══ */}
-        <section className="py-20 md:py-32 bg-slate-900 text-white overflow-hidden shadow-2xl">
-          <div className="px-5 mb-16 text-center">
-            <h2 className="text-3xl md:text-6xl font-display font-bold text-white tracking-tight mb-4">Don't Take <span className="text-orange-400">Our Word</span></h2>
-            <p className="text-slate-400 text-lg">Here's what 10,000+ Nigerian students say.</p>
-          </div>
-          <div className="flex flex-col gap-6">
-            <div className="flex gap-6 animate-scroll-left hover:pause">
-              {[...TESTIMONIALS, ...TESTIMONIALS].map((t, i) => (
-                <div key={i} className="w-[350px] shrink-0 bg-slate-800/80 border border-slate-700/70 p-8 rounded-3xl hover:border-orange-500/50 transition-all">
-                  <div className="flex gap-1 mb-4">{[...Array(5)].map((_, j) => <Star key={j} size={14} className="fill-orange-400 text-orange-400" />)}</div>
-                  <p className="text-slate-200 text-sm leading-relaxed mb-6 italic">"{t.content}"</p>
-                  <div className="flex items-center gap-3"><div className="w-10 h-10 rounded-full bg-slate-700 flex items-center justify-center font-bold text-orange-400">{t.name[0]}</div><div className="text-left"><p className="text-sm font-bold text-white flex items-center gap-1">{t.name} <CheckCircle size={12} className="text-emerald-400" /></p><p className="text-[10px] text-slate-400 uppercase tracking-widest">{t.role} • {t.location}</p></div></div>
-                </div>
-              ))}
-            </div>
-            <div className="flex gap-6 animate-scroll-right hover:pause">
-              {[...TESTIMONIALS.slice().reverse(), ...TESTIMONIALS.slice().reverse()].map((t, i) => (
-                <div key={i} className="w-[350px] shrink-0 bg-slate-800/80 border border-slate-700/70 p-8 rounded-3xl hover:border-orange-500/50 transition-all">
-                  <div className="flex gap-1 mb-4">{[...Array(5)].map((_, j) => <Star key={j} size={14} className="fill-orange-400 text-orange-400" />)}</div>
-                  <p className="text-slate-200 text-sm leading-relaxed mb-6 italic">"{t.content}"</p>
-                  <div className="flex items-center gap-3"><div className="w-10 h-10 rounded-full bg-slate-700 flex items-center justify-center font-bold text-orange-400">{t.name[0]}</div><div className="text-left"><p className="text-sm font-bold text-white flex items-center gap-1">{t.name} <CheckCircle size={12} className="text-emerald-400" /></p><p className="text-[10px] text-slate-400 uppercase tracking-widest">{t.role} • {t.location}</p></div></div>
-                </div>
-              ))}
             </div>
           </div>
         </section>
@@ -639,45 +492,27 @@ const LandingPage: React.FC = () => {
           <div className="max-w-3xl mx-auto px-5 text-center">
             <div className="reveal">
               <h2 className="text-3xl md:text-5xl font-display font-bold text-slate-900 mb-6 tracking-tight">Your <span className="text-orange-600">Unfair Advantage</span></h2>
-              <p className="text-slate-600 text-base md:text-lg mb-8 leading-relaxed">While everyone else is watching disconnected YouTube videos and paying ₦400,000/year for software — you'll have the complete pipeline, free software, 10,000+ assets, and AI rendering skills that make you 10x faster. In 15 days.</p>
+              <p className="text-slate-600 text-base md:text-lg mb-8 leading-relaxed">While others waste ₦400,000/year on software licenses and struggle for clients — you get direct free software setup, 10,000+ assets, and guaranteed ₦500,000 freelance project allocation upon 15-day completion.</p>
               <div className="bg-orange-50 border border-orange-200 rounded-3xl p-6 text-left shadow-sm">
-                <p className="text-slate-800 text-sm leading-relaxed"><strong className="text-slate-900">P.S.</strong> — Right now, AI is creating a divide. Designers who learn the hybrid workflow are charging 3x more. Those who don't are slowly becoming irrelevant. This course closes that gap in 15 days — for ₦37,000. But we won't keep it at this price forever. When the timer hits zero, the price goes up. Don't be the person who comes back tomorrow and pays more.</p>
+                <p className="text-slate-800 text-sm leading-relaxed"><strong className="text-slate-900">P.S.</strong> — This promotional bundle includes <strong>$400+ in software setup guides & free licenses</strong> + <strong>guaranteed ₦500,000 freelance project allocation</strong> for just ₦37,000. When the timer hits zero, the price goes back to ₦110,000 and free software links will close. Enroll now before you lose this opportunity!</p>
               </div>
             </div>
           </div>
         </section>
 
         {/* ═══ FINAL CTA ═══ */}
-        <CallToActionWidget timeLeft={timeLeft} onClick={openCheckout} headline="This Is Your Window." subtext="AI is widening the gap every day. 10,000+ Nigerian students chose to be on the right side. Your move." />
-
-        {/* ═══ FAQ ═══ */}
-        <section className="py-16 md:py-24 bg-white">
-          <div className="max-w-3xl mx-auto px-5">
-            <div className="reveal text-center mb-12"><h2 className="text-3xl md:text-5xl font-display font-bold text-slate-900 tracking-tight">Common Questions</h2></div>
-            <div className="space-y-3">
-              {FAQ_ITEMS.map((faq, i) => (
-                <details key={i} className="reveal group bg-slate-50 border border-slate-200 rounded-2xl overflow-hidden shadow-2xs" open={openFaqIndex === i}>
-                  <summary className="flex items-center justify-between p-5 cursor-pointer list-none" onClick={(e) => { e.preventDefault(); setOpenFaqIndex(openFaqIndex === i ? null : i); }}>
-                    <span className="text-sm md:text-base font-semibold text-slate-900 pr-6">{faq.question}</span>
-                    <ChevronDown size={18} className={`text-slate-500 transition-transform shrink-0 ${openFaqIndex === i ? 'rotate-180' : ''}`} />
-                  </summary>
-                  <div className="px-5 pb-5"><p className="text-slate-600 text-sm leading-relaxed">{faq.answer}</p></div>
-                </details>
-              ))}
-            </div>
-          </div>
-        </section>
+        <CallToActionWidget timeLeft={timeLeft} onClick={openCheckout} headline="Get 100% Free Software & Your ₦500,000 Freelance Project." subtext="10,000+ Nigerian students took action. Your turn to start earning ₦500,000+." />
 
         {/* ═══ LAST PUSH ═══ */}
         <section className="py-16 md:py-24 bg-slate-100/80 border-t border-slate-200">
           <div className="max-w-2xl mx-auto px-5 text-center">
             <div className="reveal">
-              <p className="text-red-600 text-xs font-mono uppercase tracking-widest mb-4">⚠️ Price goes up when timer expires</p>
-              <h2 className="text-3xl md:text-4xl font-display font-bold text-slate-900 mb-4 tracking-tight">You Have Two Options.</h2>
-              <p className="text-slate-600 mb-2"><strong className="text-slate-800">Option 1:</strong> Close this tab. Keep doing what you're doing. Watch AI-trained designers pass you.</p>
-              <p className="text-slate-600 mb-8"><strong className="text-slate-900">Option 2:</strong> Invest ₦37,000. Learn the complete pipeline in 15 days. Join 10,000+ Nigerian students who chose to adapt.</p>
+              <p className="text-red-600 text-xs font-mono uppercase tracking-widest mb-4">⚠️ Price increases to ₦110,000 when timer expires</p>
+              <h2 className="text-3xl md:text-4xl font-display font-bold text-slate-900 mb-4 tracking-tight">Two Options Stand Before You.</h2>
+              <p className="text-slate-600 mb-3"><strong className="text-slate-800">Option 1:</strong> Close this tab. Spend ₦400,000+ on software licenses and struggle to land clients alone.</p>
+              <p className="text-slate-600 mb-8"><strong className="text-slate-900">Option 2:</strong> Pay just ₦37,000 today. Get all software 100% FREE, learn the full pipeline in 15 days, and receive guaranteed ₦500,000 freelance project allocation!</p>
               <button onClick={openCheckout} className="px-10 py-5 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-2xl font-bold text-lg shadow-xl shadow-orange-500/25 hover:shadow-orange-500/35 hover:scale-[1.03] transition-all inline-flex items-center gap-3 group whitespace-nowrap">
-                Choose Option 2 <ArrowRight className="group-hover:translate-x-1 transition-transform" size={18} />
+                Enroll For ₦37,000 & Get Free Software <ArrowRight className="group-hover:translate-x-1 transition-transform" size={18} />
               </button>
             </div>
           </div>

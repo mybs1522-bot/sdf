@@ -16,54 +16,61 @@ export const RAW_JOINERS = [
   { name: "Blessing A.", city: "Calabar", time: "33 mins ago" },
 ];
 
+export const FEAR_STATS = [
+  { stat: '$100s', label: 'Saved on software licenses — every tool included 100% FREE', icon: '🎁' },
+  { stat: '₦500,000', label: 'Guaranteed freelance project allocation for every student', icon: '💼' },
+  { stat: '₦150,000', label: 'Average earning per single 3D render created in 2 hours', icon: '💰' },
+  { stat: '15 Days', label: 'From zero experience to high-earning freelancer or hired designer', icon: '⚡' },
+];
+
 export const PROBLEM_POINTS = [
+  { emoji: "💸", text: "Paying 100s of dollars (₦400,000+/year) for expensive software that we give you 100% FREE?" },
+  { emoji: "😭", text: "Missing out on guaranteed ₦500,000 freelance projects handed directly to trained students?" },
   { emoji: "⏰", text: "Still spending 4 hours on a floor plan that graduates from THIS system finish in 40 minutes?" },
-  { emoji: "💸", text: "Paying agencies ₦2,500,000 per rendered video — money that should be in YOUR pocket?" },
-  { emoji: "📉", text: "Losing ₦15,000,000 projects to competitors who show cinematic walkthroughs while you hand over flat PDFs?" },
-  { emoji: "🤖", text: "Watching AI replace designers who don't adapt — while AI-trained designers charge 3x more?" },
-  { emoji: "🎓", text: "Graduating with a degree but ZERO portfolio-ready renders — then wondering why nobody calls back?" },
-  { emoji: "😤", text: "Watching 50 YouTube tutorials that don't connect — still can't produce a single professional render?" },
+  { emoji: "📉", text: "Losing ₦15,000,000 projects to competitors who show 3D walkthroughs while you hand over flat PDFs?" },
+  { emoji: "🎓", text: "Graduating with a degree but ZERO high-paying clients — wondering why nobody calls back?" },
+  { emoji: "😤", text: "Watching 50 YouTube tutorials that don't connect — still can't land a single ₦100,000 gig?" },
 ];
 
 export const TRANSFORMATION_STORIES = [
-  { name: "Chioma N.", role: "Freelancer → ₦1,000,000/project", before: "Charging ₦150,000 per project. Pulling all-nighters. Clients ghosting after seeing flat 2D plans.", after: "Tripled her income in 3 months. Clients now pay ₦1,000,000+ without flinching. Goes home on time.", emoji: "💰" },
-  { name: "Emeka K.", role: "Student → 3 Job Offers", before: "Zero experience. Applied to 40 jobs: silence. Lecturers couldn't help with modern tools.", after: "Built a portfolio in 15 days. Got 3 offers in Lagos before graduation. Lecturers now ask HIM for tips.", emoji: "🎓" },
-  { name: "Femi A.", role: "Developer → ₦30M Saved/Year", before: "Paying agencies ₦2,500,000 per rendered video. Waiting weeks for deliveries. Zero control.", after: "Team does everything in-house. Saved ₦30,000,000 this year. Renders in hours, not weeks.", emoji: "📈" },
-  { name: "Amina Y.", role: "Junior → Hired for AI Skills", before: "Applied to 40 firms with a generic portfolio. Silence. Couldn't even get an interview.", after: "Rebuilt portfolio with AI + rendering skills. 3 offers in 2 weeks. Hired specifically for AI workflow.", emoji: "🤖" },
+  { name: "Chioma N.", role: "Freelancer → ₦1,000,000/project", before: "Paying ₦400k/yr for software. Charging ₦150k per project. Pulling all-nighters.", after: "Got all software 100% free. Received ₦500,000 freelance project allocation on Day 15. Tripled income.", emoji: "💰" },
+  { name: "Emeka K.", role: "Student → 3 Job Offers", before: "Zero money for expensive software licenses. Applied to 40 jobs with silence.", after: "Used free software links provided in course. Built portfolio in 15 days. 3 offers in Lagos.", emoji: "🎓" },
+  { name: "Femi A.", role: "Developer → ₦30M Saved/Year", before: "Paying agencies ₦2,500,000 per rendered video. Waiting weeks for deliveries.", after: "Team does everything in-house using free software provided. Saved ₦30,000,000 this year.", emoji: "📈" },
+  { name: "Amina Y.", role: "Junior → Hired for High-Speed Rendering", before: "Applied to 40 firms with a generic portfolio. Silence.", after: "Rebuilt portfolio with high-speed rendering skills. Hired at ₦600,000/month starting salary.", emoji: "🚀" },
 ];
 
 export const CHOOSE_PATH_DATA = [
-  { title: 'Land Your Dream Job', description: 'Build a portfolio in 15 days that makes hiring managers stop scrolling. Get hired for your AI + rendering skills, not just your degree.', color: 'from-purple-500/10 to-purple-600/5', emoji: '🎯' },
-  { title: 'Start Freelancing', description: 'Charge ₦30,000–₦100,000 per rendered image. ₦800,000–₦4,000,000 per walkthrough. Work from anywhere. Scale to ₦5M/month.', color: 'from-blue-500/10 to-blue-600/5', emoji: '🌍' },
-  { title: 'Level Up Your Studio', description: 'Stop outsourcing renders. Train your team on the full pipeline. Double your profit margin this quarter.', color: 'from-orange-500/10 to-orange-600/5', emoji: '🏢' }
+  { title: 'Land High-Paying Jobs', description: 'Build a portfolio in 15 days that makes hiring managers stop scrolling. Get hired for ₦500,000+ monthly starting salaries.', color: 'from-purple-500/10 to-purple-600/5', emoji: '🎯' },
+  { title: 'Start Freelancing Today', description: 'Get guaranteed ₦500,000 freelance project allocation. Charge ₦50,000–₦150,000 per render. Scale to ₦5M/month.', color: 'from-blue-500/10 to-blue-600/5', emoji: '🌍' },
+  { title: 'Save $100s on Tools', description: 'Stop paying $400+/year for software. Get every single tool, license, and 10,000+ assets 100% FREE forever.', color: 'from-orange-500/10 to-orange-600/5', emoji: '🏢' }
 ];
 
 export const INDUSTRIES = [
-  { label: 'Architecture Students', icon: '🎓', hook: 'Graduate with a portfolio that gets callbacks' },
-  { label: 'Interior Designers', icon: '🎨', hook: 'Stop losing clients to better presenters' },
-  { label: '3D Visualizers', icon: '🖥️', hook: 'Cut render time by 80% with AI' },
-  { label: 'Freelancers', icon: '💼', hook: 'Scale to ₦5M/month from anywhere' },
-  { label: 'Studio Owners', icon: '🏢', hook: 'Stop outsourcing — keep the profits' },
-  { label: 'Real Estate Developers', icon: '🏗️', hook: 'Sell properties before they\'re built' },
+  { label: 'Architecture Students', icon: '🎓', hook: 'Get free software + ₦500k guaranteed gigs' },
+  { label: 'Interior Designers', icon: '🎨', hook: 'Charge ₦150k per 3D render image' },
+  { label: '3D Visualizers', icon: '🖥️', hook: 'Deliver in 2 hours instead of 2 weeks' },
+  { label: 'Freelancers', icon: '💼', hook: 'Scale to ₦5,000,000/month from anywhere' },
+  { label: 'Studio Owners', icon: '🏢', hook: 'Stop paying $100s for software licenses' },
+  { label: 'Real Estate Developers', icon: '🏗️', hook: 'Sell properties 10x faster with 3D tours' },
 ];
 
 export const BUSINESS_MODULES = [
-  { title: 'Freelance Rendering Services', description: 'Charge ₦30,000–₦100,000 per photorealistic image. One walkthrough = ₦4,000,000. The math is simple.', icon: '🖼️' },
-  { title: 'Cinematic Walkthroughs', description: 'Sell ₦800,000–₦4,00,000 video tours that close deals in 60 seconds. Clients fall in love before a single brick is laid.', icon: '🎬' },
-  { title: 'In-House Visualization', description: 'Stop bleeding ₦2,500,000/image to agencies. Your team learns the full pipeline. Keep every Naira.', icon: '🏢' },
-  { title: 'AI-Powered Concept Generation', description: 'Generate 10 stunning concepts in 10 minutes using FREE AI tools that replace ₦400,000/yr software.', icon: '🤖' },
+  { title: 'Freelance Rendering Services', description: 'Charge ₦50,000–₦150,000 per 3D render image. One video walkthrough = ₦4,000,000. Keep 100% profit.', icon: '🖼️' },
+  { title: 'Guaranteed ₦500,000 Projects', description: 'We assign real client freelance projects worth ₦500,000 directly to you upon completing the 15 days.', icon: '🎬' },
+  { title: 'Save $100s on Software', description: 'Stop bleeding ₦400,000/year to software companies. Get direct links & free licenses for every tool.', icon: '🏢' },
+  { title: 'High-Speed Rendering', description: 'Generate 10 photorealistic renders in 10 minutes. Replace expensive ₦2,500,000 agency costs.', icon: '⚡' },
 ];
 
 export const PHASE_DATA = [
-  { phase: '01', title: 'AutoCAD Precision Drafting', desc: 'Master shortcuts that cut drafting time by 60%. Plans that builders actually love.' },
-  { phase: '02', title: 'SketchUp 3D Modeling', desc: 'Build complex models 5x faster. Organized scenes that never crash.' },
-  { phase: '03', title: 'V-Ray Photorealistic Rendering', desc: 'Lighting and materials indistinguishable from real photos. Charge ₦100,000/image.' },
-  { phase: '04', title: 'Lumion Cinematic Walkthroughs', desc: 'Movie-quality tours that sell projects in 60 seconds flat.' },
-  { phase: '05', title: 'D5 Real-Time Rendering', desc: 'See changes instantly. Present live to clients. Close deals in meetings.' },
-  { phase: '06', title: 'AI Architecture Mastery', desc: 'AI handles your rendering. You handle the design. 10x your output with free tools.' },
-  { phase: '07', title: '10,000+ Asset Library', desc: 'Drag-and-drop textures and models. Save 10+ hours per project. Included free.' },
-  { phase: '08', title: 'Software & Pipeline Setup', desc: 'Every tool installed FREE — no expensive licenses needed. We provide everything.' },
-  { phase: '09', title: 'Portfolio & Income System', desc: 'Build 6+ portfolio pieces. Set rates. Land your first ₦500,000+ gig in week one.' }
+  { phase: '01', title: 'AutoCAD Precision Drafting', desc: 'Draft floor plans 5x faster. AutoCAD provided 100% FREE.' },
+  { phase: '02', title: 'SketchUp 3D Modeling', desc: 'Build 3D models in minutes. SketchUp provided 100% FREE.' },
+  { phase: '03', title: 'V-Ray Photorealistic Renders', desc: 'Charge ₦150,000 per 3D image. V-Ray free student license included.' },
+  { phase: '04', title: 'Lumion Cinematic Walkthroughs', desc: 'Movie-quality tours that sell ₦4,000,000 projects in 60 seconds.' },
+  { phase: '05', title: 'D5 Real-Time Rendering', desc: 'Present live to clients. Close deals in meetings on the spot.' },
+  { phase: '06', title: '100% FREE Software Setup', desc: 'Direct links & setup for all tools ($400+ saved). Pay ₦0 for licenses.' },
+  { phase: '07', title: '10,000+ Premium Asset Pack', desc: 'Textures, 3D models, and ready scenes included 100% free.' },
+  { phase: '08', title: '₦500,000 Freelance Allocation', desc: 'Get assigned your first guaranteed ₦500,000 client project.' },
+  { phase: '09', title: 'High-Income Portfolio System', desc: 'Build 6+ client-ready pieces. Land ₦500,000+ gigs in Week 1.' }
 ];
 
 export const PAGE_PREVIEWS_ROW1 = [
@@ -94,14 +101,6 @@ export const PAGE_PREVIEWS_ROW2 = [
   '/renders/RENDER-23.jpg',
   '/renders/RENDER-24.jpg',
   '/renders/RENDER-25.jpg',
-];
-
-/* ─── FEAR STATS ─── */
-export const FEAR_STATS = [
-  { stat: '73%', label: 'of architecture grads can\'t produce a single professional render', icon: '📉' },
-  { stat: '5x', label: 'more likely to get hired with AI + rendering skills on your portfolio', icon: '🚀' },
-  { stat: '₦30M', label: 'average amount studios waste per year outsourcing renders', icon: '💸' },
-  { stat: '15 days', label: 'from zero experience to your first paid render — if you start now', icon: '⏳' },
 ];
 
 /* ─── MONEY & FREE TOOLS REALITY ─── */
