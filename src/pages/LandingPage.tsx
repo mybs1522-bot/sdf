@@ -15,20 +15,6 @@ const LandingPage: React.FC = () => {
   const [timeLeft, setTimeLeft] = useState({ h: 3, m: 36, s: 20 });
   const [showStickyBar, setShowStickyBar] = useState(false);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
-  const [loadVideo, setLoadVideo] = useState(false);
-
-  useEffect(() => {
-    // Defer heavy iframe load until user scrolls, clicks, or idle state (prevents Lighthouse LCP 24s penalty)
-    const handleTrigger = () => setLoadVideo(true);
-    window.addEventListener('scroll', handleTrigger, { once: true, passive: true });
-    window.addEventListener('pointerdown', handleTrigger, { once: true });
-    const timer = setTimeout(() => setLoadVideo(true), 3500);
-    return () => {
-      window.removeEventListener('scroll', handleTrigger);
-      window.removeEventListener('pointerdown', handleTrigger);
-      clearTimeout(timer);
-    };
-  }, []);
 
   useEffect(() => {
     const calc = () => { const D = (3 * 3600 + 36 * 60 + 20) * 1000, now = Date.now(), r = D - (now % D); setTimeLeft({ h: Math.floor((r / 3600000) % 24), m: Math.floor((r / 60000) % 60), s: Math.floor((r / 1000) % 60) }); };
@@ -106,22 +92,14 @@ const LandingPage: React.FC = () => {
 
               {/* Hero Video (Placed Directly Below Freelance Box) */}
               <div className="w-full max-w-4xl mb-8 rounded-2xl overflow-hidden border border-slate-200 shadow-2xl shadow-orange-500/10 bg-slate-900" style={{ position: 'relative', paddingTop: '56.25%' }}>
-                {loadVideo ? (
-                  <iframe
-                    title="Course overview video"
-                    src="https://iframe.mediadelivery.net/embed/494628/81badf78-a3b0-42fa-9f23-9f7213d4185c?autoplay=true&loop=true&muted=true&preload=true&responsive=true"
-                    style={{ border: 'none', position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
-                    allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
-                    allowFullScreen={true}
-                  />
-                ) : (
-                  <div onClick={() => setLoadVideo(true)} className="absolute inset-0 bg-slate-900 flex flex-col items-center justify-center cursor-pointer group">
-                    <div className="w-16 h-16 rounded-full bg-orange-500 text-white flex items-center justify-center shadow-lg shadow-orange-500/40 group-hover:scale-110 transition-transform">
-                      <Play size={28} className="fill-white ml-1" />
-                    </div>
-                    <span className="text-xs font-bold text-slate-300 mt-3 uppercase tracking-wider">Tap to Watch Overview Video</span>
-                  </div>
-                )}
+                <iframe
+                  title="Course overview video"
+                  src="https://iframe.mediadelivery.net/embed/489113/a214b199-e64a-4eaf-af70-edfbc586e5fd?autoplay=true&loop=true&muted=true&preload=true&responsive=true"
+                  loading="eager"
+                  style={{ border: 'none', position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+                  allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+                  allowFullScreen={true}
+                />
               </div>
 
               {/* 3 Pillars Visual Mini-Cards */}
@@ -271,7 +249,7 @@ const LandingPage: React.FC = () => {
             <div className="w-full max-w-3xl mx-auto mt-10 rounded-2xl overflow-hidden border border-slate-200 shadow-2xl bg-slate-900" style={{ position: 'relative', paddingTop: '56.25%' }}>
               <iframe
                 title="Course preview walkthrough"
-                src="https://iframe.mediadelivery.net/embed/489113/a214b199-e64a-4eaf-af70-edfbc586e5fd?autoplay=true&loop=true&muted=true&preload=true&responsive=true"
+                src="https://iframe.mediadelivery.net/embed/494628/81badf78-a3b0-42fa-9f23-9f7213d4185c?autoplay=true&loop=true&muted=true&preload=true&responsive=true"
                 loading="lazy"
                 style={{ border: 'none', position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
                 allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
