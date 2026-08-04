@@ -27,17 +27,6 @@ const LandingPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 font-sans overflow-x-hidden antialiased selection:bg-orange-500/20">
 
-      {/* ═══ STICKY HEADER ═══ */}
-      <header className="sticky top-0 z-[60] bg-white/90 backdrop-blur-xl border-b border-slate-200/80 px-5 py-4 shadow-sm">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <Logo />
-          <div className="flex items-center gap-4">
-            <button onClick={() => setIsLoginOpen(true)} className="flex items-center gap-2 text-xs font-bold text-slate-600 hover:text-slate-900 transition-colors uppercase tracking-widest"><LogIn size={14} /> Login</button>
-            <button onClick={openCheckout} className="hidden md:block text-white px-5 py-2.5 rounded-full text-[11px] font-black uppercase tracking-widest hover:scale-105 transition-all shadow-md shadow-orange-500/20" style={{ background: 'linear-gradient(135deg,#f97316,#ea580c)' }}>Enroll Now — ₦37,000</button>
-          </div>
-        </div>
-      </header>
-
       <main>
         {/* ═══ HERO — Light Theme ═══ */}
         <section className="relative pt-6 pb-16 md:pb-24 overflow-hidden bg-gradient-to-b from-orange-50/70 via-white to-slate-50 border-b border-slate-200/60">
@@ -47,11 +36,6 @@ const LandingPage: React.FC = () => {
           </div>
           <div className="max-w-5xl mx-auto px-5 relative z-10">
             <div className="flex flex-col items-center text-center pt-6 md:pt-10">
-              {/* Proof Badge */}
-              <div className="mb-6 inline-flex items-center gap-2 px-4 py-1.5 bg-emerald-50 border border-emerald-200 rounded-full shadow-2xs">
-                <span className="w-2.5 h-2.5 bg-emerald-500 rounded-full animate-pulse"></span>
-                <span className="text-xs font-bold text-emerald-800">10,000+ Nigerian Students Enrolled 🇳🇬</span>
-              </div>
 
               {/* Main Headline with exact requested copy */}
               <h1 className="font-display font-bold leading-tight mb-6 text-slate-900 tracking-tight">
